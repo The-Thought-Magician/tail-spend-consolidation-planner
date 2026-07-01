@@ -120,7 +120,8 @@ export default function WorkspacesPage() {
     setEditing(ws)
     setName(ws.name ?? '')
     setCurrency(ws.base_currency ?? 'USD')
-    setTailThreshold(String(ws.tail_threshold_pct ?? 80))
+    const t = ws.tail_threshold_pct ?? 0.8
+    setTailThreshold(String(t <= 1 ? Math.round(t * 100) : t))
     setFyStart(ws.fiscal_year_start ?? '01-01')
     setFormError('')
     setFormOpen(true)
@@ -137,7 +138,7 @@ export default function WorkspacesPage() {
     const body = {
       name: name.trim(),
       base_currency: currency.trim() || 'USD',
-      tail_threshold_pct: Number(tailThreshold) || 80,
+      tail_threshold_pct: (Number(tailThreshold) || 80) / 100,
       fiscal_year_start: fyStart.trim() || '01-01',
     }
     try {
@@ -290,7 +291,11 @@ export default function WorkspacesPage() {
                         {isActive && <Badge tone="cyan">Active</Badge>}
                       </div>
                       <p className="mt-0.5 text-xs text-slate-500">
-                        {ws.base_currency ?? 'USD'} · Tail threshold {ws.tail_threshold_pct ?? 80}%
+                        {ws.base_currency ?? 'USD'} · Tail threshold{' '}
+                        {(() => {
+                          const t = ws.tail_threshold_pct ?? 0.8
+                          return t <= 1 ? Math.round(t * 100) : t
+                        })()}%
                       </p>
                     </div>
                   </div>

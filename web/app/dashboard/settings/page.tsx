@@ -169,9 +169,9 @@ export default function SettingsPage() {
         name: name.trim(),
         base_currency: currency,
         fiscal_year_start: fyStart,
-        tail_threshold_pct: thr,
+        tail_threshold_pct: thr / 100,
       })
-      const ws: Workspace = updated && updated.id ? updated : { ...workspace, name: name.trim(), base_currency: currency, fiscal_year_start: fyStart, tail_threshold_pct: thr }
+      const ws: Workspace = updated && updated.id ? updated : { ...workspace, name: name.trim(), base_currency: currency, fiscal_year_start: fyStart, tail_threshold_pct: thr / 100 }
       setWorkspace(ws)
       hydrateForm(ws)
       setNotice('Workspace settings saved.')

@@ -143,9 +143,21 @@ async function generateSampleData(workspaceId: string, userId: string): Promise<
   const seeded: SeededSupplier[] = []
   const countries = ['US', 'US', 'US', 'GB', 'DE', 'FR', 'CA']
 
+  // Extra name variants alternate between two roles across the blueprint:
+  //   - "duplicate" variants are seeded as their OWN suppliers row (same
+  //     domain, unresolved) so the fuzzy duplicate-detection feature has
+  //     real near-duplicate supplier pairs to find.
+  //   - "alias" variants are seeded into supplier_aliases, i.e. already
+  //     resolved to the canonical supplier, to demo the aliasing feature.
+  // Previously ALL extra variants went straight into supplier_aliases,
+  // which pre-resolved every intentional duplicate before detection ever
+  // ran, so /duplicates/detect always found zero pairs.
+  let variantIndex = 0
+
   for (const blueprint of SUPPLIER_BLUEPRINT) {
     const categoryId = categoryIdByCode.get(blueprint.categoryCode)!
     const canonicalName = blueprint.names[0]
+    const domain = normalizeName(canonicalName).replace(/\s+/g, '') + '.com'
     const [supplier] = await db
       .insert(suppliers)
       .values({
@@ -155,21 +167,47 @@ async function generateSampleData(workspaceId: string, userId: string): Promise<
         category_id: categoryId,
         status: 'active',
         country: pick(countries),
-        domain: normalizeName(canonicalName).replace(/\s+/g, '') + '.com',
+        domain,
       })
       .returning()
     counts.suppliers++
     seeded.push({ id: supplier.id, name: canonicalName, categoryId, itemKeys: blueprint.itemKeys, tier: blueprint.tier })
 
-    // Extra spelling variants become aliases on the canonical supplier.
-    for (const alias of blueprint.names.slice(1)) {
-      await db.insert(supplier_aliases).values({
-        workspace_id: workspaceId,
-        supplier_id: supplier.id,
-        raw_name: alias,
-        source: 'sample-data',
-      })
-      counts.aliases++
+    for (const variantName of blueprint.names.slice(1)) {
+      if (variantIndex % 2 === 0) {
+        // Unresolved near-duplicate: its own suppliers row, same domain as
+        // the canonical entry, left for duplicate detection to surface.
+        const [dupSupplier] = await db
+          .insert(suppliers)
+          .values({
+            workspace_id: workspaceId,
+            name: variantName,
+            normalized_name: normalizeName(variantName),
+            category_id: categoryId,
+            status: 'active',
+            country: pick(countries),
+            domain,
+          })
+          .returning()
+        counts.suppliers++
+        seeded.push({
+          id: dupSupplier.id,
+          name: variantName,
+          categoryId,
+          itemKeys: blueprint.itemKeys,
+          tier: blueprint.tier,
+        })
+      } else {
+        // Already-resolved spelling variant: an alias of the canonical supplier.
+        await db.insert(supplier_aliases).values({
+          workspace_id: workspaceId,
+          supplier_id: supplier.id,
+          raw_name: variantName,
+          source: 'sample-data',
+        })
+        counts.aliases++
+      }
+      variantIndex++
     }
   }
 

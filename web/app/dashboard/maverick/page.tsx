@@ -15,7 +15,9 @@ type Finding = {
   workspace_id: string
   transaction_id?: string | null
   supplier_id?: string | null
+  supplier_name?: string | null
   category_id?: string | null
+  category_name?: string | null
   contract_id?: string | null
   expected_price?: number | string | null
   paid_price?: number | string | null
@@ -429,7 +431,7 @@ export default function MaverickPage() {
                         <TD>
                           <div className="text-slate-200">{f.reason || 'Off-contract purchase'}</div>
                           <div className="text-[11px] text-slate-500">
-                            {f.supplier_id ? `Supplier ${String(f.supplier_id).slice(0, 8)}` : 'No supplier'}
+                            {f.supplier_name || (f.supplier_id ? `Supplier ${String(f.supplier_id).slice(0, 8)}` : 'No supplier')}
                             {f.contract_id ? ` · Contract ${String(f.contract_id).slice(0, 8)}` : ' · No contract'}
                           </div>
                         </TD>

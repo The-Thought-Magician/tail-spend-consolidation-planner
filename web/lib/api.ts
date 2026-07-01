@@ -1,13 +1,26 @@
 // Same-origin relative calls to /api/proxy/<path>; each path maps 1:1 to /api/v1/<path>.
 // The proxy route resolves the session server-side and injects X-User-Id.
 
+function extractErrorMessage(data: any, status: number): string {
+  if (!data) return `Request failed (${status})`
+  if (typeof data === 'string') return data
+  const err = data.error
+  // @hono/zod-validator failure shape: { success: false, error: { issues: [{ message, path, ... }] } }
+  if (err && Array.isArray(err.issues)) {
+    const msgs = err.issues.map((issue: any) => issue?.message).filter(Boolean)
+    if (msgs.length) return msgs.join('; ')
+  }
+  if (typeof err === 'string') return err
+  if (typeof data.message === 'string') return data.message
+  return `Request failed (${status})`
+}
+
 async function j(res: Response) {
   const text = await res.text()
   let data: any = null
   try { data = text ? JSON.parse(text) : null } catch { data = text }
   if (!res.ok) {
-    const msg = (data && (data.error || data.message)) || `Request failed (${res.status})`
-    throw new Error(msg)
+    throw new Error(extractErrorMessage(data, res.status))
   }
   return data
 }

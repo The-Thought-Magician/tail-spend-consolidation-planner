@@ -129,7 +129,7 @@ export default function TailPage() {
       await api.computeTail({
         workspace_id: wsId,
         dimension,
-        threshold_pct: num(threshold) || 80,
+        threshold_pct: (num(threshold) || 80) / 100,
       })
       await load(wsId, dimension)
     } catch (e) {

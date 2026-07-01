@@ -7,6 +7,8 @@ import {
   transactions,
   contracts,
   maverick_findings,
+  suppliers,
+  categories,
 } from '../db/schema.js'
 import { eq, and, desc } from 'drizzle-orm'
 import { authMiddleware, getUserId } from '../lib/auth.js'
@@ -38,7 +40,25 @@ router.get('/', async (c) => {
     .from(maverick_findings)
     .where(and(...conditions))
     .orderBy(desc(maverick_findings.leakage_amount))
-  return c.json(rows)
+
+  const supplierRows = await db
+    .select()
+    .from(suppliers)
+    .where(eq(suppliers.workspace_id, workspaceId))
+  const supplierNameById = new Map(supplierRows.map((s) => [s.id, s.name]))
+
+  const categoryRows = await db
+    .select()
+    .from(categories)
+    .where(eq(categories.workspace_id, workspaceId))
+  const categoryNameById = new Map(categoryRows.map((c) => [c.id, c.name]))
+
+  const out = rows.map((r) => ({
+    ...r,
+    supplier_name: r.supplier_id ? supplierNameById.get(r.supplier_id) ?? null : null,
+    category_name: r.category_id ? categoryNameById.get(r.category_id) ?? null : null,
+  }))
+  return c.json(out)
 })
 
 // ---------------------------------------------------------------------------
@@ -196,9 +216,22 @@ router.get('/rate', async (c) => {
     }
   }
 
+  let categoryNameById = new Map<string, string>()
+  if (by === 'category') {
+    const categoryRows = await db
+      .select()
+      .from(categories)
+      .where(eq(categories.workspace_id, workspaceId))
+    categoryNameById = new Map(categoryRows.map((c) => [c.id, c.name]))
+  }
+
   const rows = [...agg.entries()]
     .map(([key, a]) => ({
       key,
+      label:
+        by === 'category'
+          ? (key === 'uncategorized' ? 'Uncategorized' : categoryNameById.get(key) ?? key)
+          : key,
       dimension: by,
       total_spend: a.total_spend,
       maverick_spend: a.maverick_spend,
