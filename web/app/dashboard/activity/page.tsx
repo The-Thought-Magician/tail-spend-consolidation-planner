@@ -275,7 +275,7 @@ export default function ActivityPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Audit trail</h2>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-stone-500">
                   {filtered.length} of {rows.length} loaded{total > rows.length ? ` · ${total} total` : ''}
                 </p>
               </div>
@@ -284,12 +284,12 @@ export default function ActivityPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search events..."
-                  className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-44 rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
                 <select
                   value={actionFilter}
                   onChange={(e) => setActionFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="all">All actions</option>
                   {actionOptions.map((a) => (
@@ -301,7 +301,7 @@ export default function ActivityPage() {
                 <select
                   value={entityFilter}
                   onChange={(e) => setEntityFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="all">All entities</option>
                   {entityOptions.map((e) => (
@@ -327,19 +327,19 @@ export default function ActivityPage() {
                   {grouped.map((g) => (
                     <div key={g.day}>
                       <div className="mb-3 flex items-center gap-3">
-                        <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">{g.day}</span>
-                        <span className="h-px flex-1 bg-slate-800" />
-                        <span className="text-[11px] text-slate-600">{g.items.length} events</span>
+                        <span className="text-xs font-semibold uppercase tracking-wide text-stone-500">{g.day}</span>
+                        <span className="h-px flex-1 bg-stone-800" />
+                        <span className="text-[11px] text-stone-600">{g.items.length} events</span>
                       </div>
                       <ol className="relative space-y-4 pl-6">
-                        <span className="absolute left-2 top-1 bottom-1 w-px bg-slate-800" aria-hidden />
+                        <span className="absolute left-2 top-1 bottom-1 w-px bg-stone-800" aria-hidden />
                         {g.items.map((r) => {
                           const href = entityToHref(r.entity_type, r.entity_id)
                           const tone = actionTone(r.action)
                           return (
                             <li key={r.id} className="relative">
                               <span
-                                className="absolute -left-[1.35rem] top-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-[10px] text-cyan-300"
+                                className="absolute -left-[1.35rem] top-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-stone-700 bg-stone-900 text-[10px] text-cyan-300"
                                 aria-hidden
                               >
                                 {actionIcon(r.action)}
@@ -348,22 +348,22 @@ export default function ActivityPage() {
                                 <Badge tone={tone}>{humanize(r.action) || 'Event'}</Badge>
                                 {r.entity_type && (
                                   href ? (
-                                    <a href={href} className="text-sm font-medium text-slate-200 hover:text-cyan-300">
+                                    <a href={href} className="text-sm font-medium text-stone-200 hover:text-cyan-300">
                                       {humanize(r.entity_type)}
-                                      {r.entity_id ? <span className="text-slate-500"> · {String(r.entity_id).slice(0, 8)}</span> : null}
+                                      {r.entity_id ? <span className="text-stone-500"> · {String(r.entity_id).slice(0, 8)}</span> : null}
                                     </a>
                                   ) : (
-                                    <span className="text-sm font-medium text-slate-200">
+                                    <span className="text-sm font-medium text-stone-200">
                                       {humanize(r.entity_type)}
-                                      {r.entity_id ? <span className="text-slate-500"> · {String(r.entity_id).slice(0, 8)}</span> : null}
+                                      {r.entity_id ? <span className="text-stone-500"> · {String(r.entity_id).slice(0, 8)}</span> : null}
                                     </span>
                                   )
                                 )}
-                                <span className="text-xs text-slate-500" title={fmtDateTime(r.created_at)}>
+                                <span className="text-xs text-stone-500" title={fmtDateTime(r.created_at)}>
                                   {relTime(r.created_at)}
                                 </span>
                               </div>
-                              <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+                              <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-stone-500">
                                 {r.user_id && <span>by {String(r.user_id).slice(0, 12)}</span>}
                                 <span>{fmtDateTime(r.created_at)}</span>
                               </div>
@@ -374,9 +374,9 @@ export default function ActivityPage() {
                                     .map(([k, v]) => (
                                       <span
                                         key={k}
-                                        className="rounded-md border border-slate-800 bg-slate-900/60 px-1.5 py-0.5 text-[11px] text-slate-400"
+                                        className="rounded-md border border-stone-800 bg-stone-900/60 px-1.5 py-0.5 text-[11px] text-stone-400"
                                       >
-                                        <span className="text-slate-600">{humanize(k)}:</span>{' '}
+                                        <span className="text-stone-600">{humanize(k)}:</span>{' '}
                                         {typeof v === 'object' ? JSON.stringify(v) : String(v)}
                                       </span>
                                     ))}
@@ -416,7 +416,7 @@ function Header({ onRefresh, disabled }: { onRefresh: () => void; disabled?: boo
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Activity</h1>
-        <p className="text-sm text-slate-500">A chronological audit trail of every change made in this workspace.</p>
+        <p className="text-sm text-stone-500">A chronological audit trail of every change made in this workspace.</p>
       </div>
       <Button variant="secondary" onClick={onRefresh} disabled={disabled}>
         Refresh

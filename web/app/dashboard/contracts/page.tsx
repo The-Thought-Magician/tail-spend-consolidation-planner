@@ -322,7 +322,7 @@ export default function ContractsPage() {
               </CardHeader>
               <CardBody>
                 {coverage.length === 0 ? (
-                  <p className="py-6 text-center text-sm text-slate-500">
+                  <p className="py-6 text-center text-sm text-stone-500">
                     No coverage data yet. Add contracts and transactions to compute coverage.
                   </p>
                 ) : (
@@ -336,10 +336,10 @@ export default function ContractsPage() {
                       return (
                         <li key={r.category_id || i}>
                           <div className="mb-1 flex items-center justify-between text-xs">
-                            <span className="text-slate-300">{label}</span>
-                            <span className="font-medium text-slate-200">{pct.toFixed(1)}%</span>
+                            <span className="text-stone-300">{label}</span>
+                            <span className="font-medium text-stone-200">{pct.toFixed(1)}%</span>
                           </div>
-                          <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                          <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                             <div
                               className={`h-full ${
                                 clamped >= 70
@@ -352,7 +352,7 @@ export default function ContractsPage() {
                             />
                           </div>
                           {(r.on_contract_spend != null || r.off_contract_spend != null) && (
-                            <div className="mt-1 flex justify-between text-[11px] text-slate-500">
+                            <div className="mt-1 flex justify-between text-[11px] text-stone-500">
                               <span>On: {fmtCurrency(r.on_contract_spend)}</span>
                               <span>Off: {fmtCurrency(r.off_contract_spend)}</span>
                             </div>
@@ -376,7 +376,7 @@ export default function ContractsPage() {
                     setExpiringDays(d)
                     void reloadExpiring(d)
                   }}
-                  className="rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-950 px-2 py-1 text-xs text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value={30}>30 days</option>
                   <option value={60}>60 days</option>
@@ -386,7 +386,7 @@ export default function ContractsPage() {
               </CardHeader>
               <CardBody>
                 {expiring.length === 0 ? (
-                  <p className="py-6 text-center text-sm text-slate-500">
+                  <p className="py-6 text-center text-sm text-stone-500">
                     No contracts expiring in the next {expiringDays} days.
                   </p>
                 ) : (
@@ -396,11 +396,11 @@ export default function ContractsPage() {
                       return (
                         <li
                           key={c.id}
-                          className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2"
+                          className="flex items-center justify-between rounded-lg border border-stone-800 bg-stone-950/50 px-3 py-2"
                         >
                           <div className="min-w-0">
-                            <p className="truncate text-sm text-slate-200">{c.name}</p>
-                            <p className="truncate text-xs text-slate-500">
+                            <p className="truncate text-sm text-stone-200">{c.name}</p>
+                            <p className="truncate text-xs text-stone-500">
                               {supplierName(c.supplier_id)}
                             </p>
                           </div>
@@ -422,7 +422,7 @@ export default function ContractsPage() {
               <select
                 value={supplierFilter}
                 onChange={(e) => setSupplierFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All suppliers</option>
                 {suppliers.map((s) => (
@@ -434,7 +434,7 @@ export default function ContractsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All statuses</option>
                 <option value="active">Active</option>
@@ -446,7 +446,7 @@ export default function ContractsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search contracts..."
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </CardBody>
           </Card>
@@ -455,7 +455,7 @@ export default function ContractsPage() {
           <Card>
             <CardHeader className="flex items-center justify-between">
               <h2 className="text-sm font-semibold text-white">Contract Registry</h2>
-              <span className="text-xs text-slate-500">{filtered.length} shown</span>
+              <span className="text-xs text-stone-500">{filtered.length} shown</span>
             </CardHeader>
             <CardBody className="p-0">
               {contracts.length === 0 ? (
@@ -505,9 +505,9 @@ export default function ContractsPage() {
                   <TBody>
                     {filtered.map((c) => (
                       <TR key={c.id}>
-                        <TD className="font-medium text-slate-100">{c.name}</TD>
+                        <TD className="font-medium text-stone-100">{c.name}</TD>
                         <TD>{supplierName(c.supplier_id)}</TD>
-                        <TD className="text-right text-slate-300">
+                        <TD className="text-right text-stone-300">
                           {c.contracted_unit_price != null
                             ? Number(c.contracted_unit_price).toLocaleString('en-US', {
                                 style: 'currency',
@@ -515,12 +515,12 @@ export default function ContractsPage() {
                               })
                             : '—'}
                         </TD>
-                        <TD className="text-right text-slate-300">
+                        <TD className="text-right text-stone-300">
                           {c.committed_volume != null
                             ? Number(c.committed_volume).toLocaleString()
                             : '—'}
                         </TD>
-                        <TD className="whitespace-nowrap text-xs text-slate-400">
+                        <TD className="whitespace-nowrap text-xs text-stone-400">
                           {fmtDate(c.start_date)} → {fmtDate(c.end_date)}
                         </TD>
                         <TD>
@@ -530,13 +530,13 @@ export default function ContractsPage() {
                           <div className="flex justify-end gap-1">
                             <button
                               onClick={() => openEdit(c)}
-                              className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
+                              className="rounded px-2 py-1 text-xs text-stone-400 hover:bg-stone-800 hover:text-white"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => remove(c)}
-                              className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-rose-300"
+                              className="rounded px-2 py-1 text-xs text-stone-400 hover:bg-stone-800 hover:text-rose-300"
                             >
                               Delete
                             </button>
@@ -579,14 +579,14 @@ export default function ContractsPage() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="e.g. Acme MSA 2026"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </Field>
           <Field label="Supplier">
             <select
               value={form.supplier_id}
               onChange={(e) => setForm({ ...form, supplier_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">— None —</option>
               {suppliers.map((s) => (
@@ -603,7 +603,7 @@ export default function ContractsPage() {
                 step="any"
                 value={form.contracted_unit_price}
                 onChange={(e) => setForm({ ...form, contracted_unit_price: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Committed Volume">
@@ -612,21 +612,21 @@ export default function ContractsPage() {
                 step="any"
                 value={form.committed_volume}
                 onChange={(e) => setForm({ ...form, committed_volume: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Currency">
               <input
                 value={form.currency}
                 onChange={(e) => setForm({ ...form, currency: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Status">
               <select
                 value={form.status}
                 onChange={(e) => setForm({ ...form, status: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="active">Active</option>
                 <option value="pending">Pending</option>
@@ -639,7 +639,7 @@ export default function ContractsPage() {
                 type="date"
                 value={form.start_date}
                 onChange={(e) => setForm({ ...form, start_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="End Date">
@@ -647,7 +647,7 @@ export default function ContractsPage() {
                 type="date"
                 value={form.end_date}
                 onChange={(e) => setForm({ ...form, end_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
           </div>
@@ -662,7 +662,7 @@ function Header({ onCreate, disabled }: { onCreate: () => void; disabled?: boole
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Contracts</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-stone-500">
           Registry, on-contract coverage, and expiring-contract alerts.
         </p>
       </div>
@@ -676,7 +676,7 @@ function Header({ onCreate, disabled }: { onCreate: () => void; disabled?: boole
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}
       </span>
       {children}

@@ -254,7 +254,7 @@ export default function WorkspacesPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-white">Workspaces</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Switch the active workspace and manage its members.
           </p>
         </div>
@@ -290,7 +290,7 @@ export default function WorkspacesPage() {
                         <h3 className="truncate text-base font-semibold text-white">{ws.name}</h3>
                         {isActive && <Badge tone="cyan">Active</Badge>}
                       </div>
-                      <p className="mt-0.5 text-xs text-slate-500">
+                      <p className="mt-0.5 text-xs text-stone-500">
                         {ws.base_currency ?? 'USD'} · Tail threshold{' '}
                         {(() => {
                           const t = ws.tail_threshold_pct ?? 0.8
@@ -302,12 +302,12 @@ export default function WorkspacesPage() {
 
                   <dl className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <dt className="text-slate-500">Fiscal year start</dt>
-                      <dd className="text-slate-300">{ws.fiscal_year_start ?? '01-01'}</dd>
+                      <dt className="text-stone-500">Fiscal year start</dt>
+                      <dd className="text-stone-300">{ws.fiscal_year_start ?? '01-01'}</dd>
                     </div>
                     <div>
-                      <dt className="text-slate-500">Created</dt>
-                      <dd className="text-slate-300">
+                      <dt className="text-stone-500">Created</dt>
+                      <dd className="text-stone-300">
                         {ws.created_at ? new Date(ws.created_at).toLocaleDateString() : '—'}
                       </dd>
                     </div>
@@ -344,7 +344,7 @@ export default function WorkspacesPage() {
               Members · <span className="text-cyan-300">{membersFor.name}</span>
             </h2>
             <button
-              className="text-slate-500 hover:text-white"
+              className="text-stone-500 hover:text-white"
               onClick={() => setMembersFor(null)}
               aria-label="Close members"
             >
@@ -354,20 +354,20 @@ export default function WorkspacesPage() {
           <CardBody className="space-y-4">
             <form onSubmit={addMember} className="flex flex-wrap items-end gap-2">
               <div className="min-w-[200px] flex-1">
-                <label className="mb-1 block text-xs font-medium text-slate-400">User ID</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">User ID</label>
                 <input
                   value={newMemberId}
                   onChange={(e) => setNewMemberId(e.target.value)}
                   placeholder="user_..."
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Role</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Role</label>
                 <select
                   value={newMemberRole}
                   onChange={(e) => setNewMemberRole(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="member">member</option>
                   <option value="admin">admin</option>
@@ -403,13 +403,13 @@ export default function WorkspacesPage() {
                 <TBody>
                   {members.map((m) => (
                     <TR key={m.id}>
-                      <TD className="font-mono text-xs text-slate-200">{m.user_id}</TD>
+                      <TD className="font-mono text-xs text-stone-200">{m.user_id}</TD>
                       <TD>
                         <Badge tone={m.role === 'owner' ? 'cyan' : 'slate'} className="capitalize">
                           {m.role ?? 'member'}
                         </Badge>
                       </TD>
-                      <TD className="text-xs text-slate-500">
+                      <TD className="text-xs text-stone-500">
                         {m.created_at ? new Date(m.created_at).toLocaleDateString() : '—'}
                       </TD>
                       <TD className="text-right">
@@ -453,45 +453,45 @@ export default function WorkspacesPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Name</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="ACME Procurement"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
               autoFocus
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Base currency</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Base currency</label>
               <input
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value.toUpperCase())}
                 maxLength={3}
                 placeholder="USD"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Tail threshold %</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Tail threshold %</label>
               <input
                 type="number"
                 min={1}
                 max={99}
                 value={tailThreshold}
                 onChange={(e) => setTailThreshold(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Fiscal year start (MM-DD)</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Fiscal year start (MM-DD)</label>
             <input
               value={fyStart}
               onChange={(e) => setFyStart(e.target.value)}
               placeholder="01-01"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </form>
@@ -513,7 +513,7 @@ export default function WorkspacesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           Delete <span className="font-semibold text-white">{deleting?.name}</span> and all of its data?
           This cannot be undone.
         </p>

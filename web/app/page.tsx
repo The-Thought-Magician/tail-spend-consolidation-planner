@@ -3,54 +3,54 @@ import Link from 'next/link'
 const FEATURES = [
   {
     title: 'Tail-Spend Classifier',
-    body: 'Pareto (80/20) segmentation of suppliers into head / mid / tail bands with configurable thresholds, concentration metrics, and trend over time.',
+    body: 'A Pareto (80/20) segmentation of your supplier base into head, mid, and tail bands, with configurable thresholds, concentration metrics, and trend tracking period over period.',
   },
   {
     title: 'Duplicate Supplier Detection',
-    body: 'Fuzzy name matching with multi-signal scoring (name, tax id, domain) clusters near-duplicate suppliers and estimates the spend you could combine.',
+    body: 'Multi-signal fuzzy matching on name, tax ID, and domain clusters near-duplicate suppliers and quantifies the spend available for combination within a category.',
   },
   {
     title: 'Maverick-Spend Finder',
-    body: 'Match transactions to active contracts, flag off-contract buys, and quantify leakage as paid price minus contracted price by category and cost center.',
+    body: 'Transactions are matched against active contracts to flag off-contract purchases, with leakage quantified as paid price less contracted price, by category and cost center.',
   },
   {
     title: 'Price-Dispersion Analysis',
-    body: 'Per-item price statistics (min, max, median, p25, p75), a dispersion index, and addressable savings benchmarked to the best achievable price.',
+    body: 'Per-item price statistics, including minimum, maximum, median, and quartile bands, are paired with a dispersion index and an addressable-savings estimate benchmarked to the best price achieved.',
   },
   {
     title: 'Transaction-Cost Ledger',
-    body: 'Model fully-loaded cost-per-PO, cost-per-invoice, and cost-per-supplier, then quantify the transaction-cost reduction from removing N tail suppliers.',
+    body: 'A configurable model of fully-loaded cost per PO, per invoice, and per supplier quantifies the transaction-cost reduction achievable by removing tail suppliers.',
   },
   {
     title: 'Consolidation Business-Case Builder',
-    body: 'Collapse N suppliers into M with assumption sliders for price improvement, transaction cost, and ramp. Outputs net savings, ROI, and payback period.',
+    body: 'Model the consolidation of N suppliers into M, with assumptions for price improvement, transaction cost, and ramp. The output is net savings, ROI, and payback period, presented in a format suited for review with FP&A.',
   },
   {
     title: 'Recommendations & Initiative Tracker',
-    body: 'Auto-generate prioritized consolidation recommendations, convert them to scenarios or initiatives, and track target versus realized savings to close-out.',
+    body: 'Prioritized consolidation recommendations are generated automatically, converted into scenarios or initiatives, and tracked from target through realized savings at close-out.',
   },
 ]
 
 const PROBLEMS = [
-  ['Spend is fragmented and invisible', 'Tail spend sits below category-manager thresholds, so nobody owns it, nobody negotiates it, and it regrows every year.'],
-  ['Duplicate suppliers proliferate', 'The same category is served by dozens of overlapping vendors from decentralized buying, M&A, and ERP migrations, diluting volume leverage.'],
-  ['Maverick spend leaks savings', 'Buyers purchase outside negotiated contracts and pay list price when a contracted rate already existed, with no systematic way to surface it.'],
-  ['No defensible business case', 'There is rarely a clean, analyst-ready case that says collapse these N suppliers into these M and save $X in price, $Y in transaction cost, $Z in working capital.'],
+  ['Spend is fragmented and effectively invisible', 'Tail spend sits below the attention threshold of most category managers. As a result, it is unowned, unnegotiated, and it re-accumulates every year.'],
+  ['Duplicate suppliers proliferate across categories', 'The same category is frequently served by a dozen or more overlapping vendors, a byproduct of decentralized buying, M&A activity, and ERP migrations. Each duplicate dilutes volume leverage.'],
+  ['Maverick spend erodes negotiated savings', 'Buyers purchase outside negotiated contracts and pay list price where a contracted rate already existed, and there has been no systematic way to surface this leakage.'],
+  ['A defensible business case rarely exists', 'Even where fragmentation is suspected, procurement teams seldom have an analyst-ready case demonstrating that consolidating N suppliers into M will yield $X in unit-price improvement, $Y in transaction-cost reduction, and $Z in working-capital benefit.'],
 ]
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <nav className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
+    <main className="min-h-screen bg-stone-950 text-white">
+      <nav className="flex items-center justify-between border-b border-stone-800 px-6 py-4">
         <span className="inline-flex items-center gap-2 text-lg font-black tracking-tight text-cyan-400">
           <span className="inline-block h-3 w-3 rounded-sm bg-cyan-400" />
           TailSpendConsolidationPlanner
         </span>
         <div className="flex items-center gap-4">
-          <Link href="/pricing" className="text-sm text-slate-300 hover:text-white">Pricing</Link>
-          <Link href="/auth/sign-in" className="text-sm text-slate-300 hover:text-white">Sign In</Link>
-          <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400">
-            Get Started
+          <Link href="/pricing" className="text-sm text-stone-300 hover:text-white">Pricing</Link>
+          <Link href="/auth/sign-in" className="text-sm text-stone-300 hover:text-white">Sign In</Link>
+          <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-cyan-400">
+            Request Access
           </Link>
         </div>
       </nav>
@@ -60,35 +60,36 @@ export default function Home() {
           Buy-side procurement spend analytics
         </span>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">
-          Turn fragmented tail spend into a defensible consolidation business case
+          A defensible business case for consolidating your tail spend
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-          Expose the long-tail, maverick, and duplicate-supplier spend hiding inside your purchasing data, then build a
-          dollar-quantified case to consolidate it onto fewer contracts and fewer suppliers.
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-stone-400">
+          We help procurement organizations quantify the long-tail, maverick, and duplicate-supplier spend embedded in
+          their purchasing data, and translate it into a dollar-quantified case for consolidating that spend onto
+          fewer contracts and fewer suppliers.
         </p>
         <div className="mt-8 flex items-center justify-center gap-4">
-          <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400">
-            Start free
+          <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-6 py-3 text-sm font-semibold text-stone-950 hover:bg-cyan-400">
+            Start an assessment
           </Link>
-          <Link href="/auth/sign-in" className="rounded-lg border border-slate-700 px-6 py-3 text-sm font-medium text-slate-200 hover:bg-slate-800">
+          <Link href="/auth/sign-in" className="rounded-lg border border-stone-700 px-6 py-3 text-sm font-medium text-stone-200 hover:bg-stone-800">
             Sign in
           </Link>
         </div>
-        <p className="mt-4 text-xs text-slate-600">No credit card. One-click sample dataset for an instant demo.</p>
+        <p className="mt-4 text-xs text-stone-600">No credit card required. A built-in sample dataset is available for an immediate walkthrough.</p>
       </section>
 
-      <section className="border-t border-slate-800 bg-slate-900/30 px-6 py-20">
+      <section className="border-t border-stone-800 bg-stone-900/30 px-6 py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold">Why tail spend leaks money</h2>
-          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-slate-500">
-            In most large enterprises roughly 20% of total spend is spread across 80% of suppliers as one-off purchases,
-            redundant vendors, and off-contract buys.
+          <h2 className="text-center text-2xl font-bold">Why tail spend erodes procurement's leverage</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-stone-500">
+            In most large enterprises, roughly twenty percent of total spend is distributed across eighty percent of
+            suppliers, in the form of one-off purchases, redundant vendors, and off-contract buys.
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {PROBLEMS.map(([title, body]) => (
-              <div key={title} className="rounded-xl border border-slate-800 bg-slate-900/70 p-6">
+              <div key={title} className="rounded-xl border border-stone-800 bg-stone-900/70 p-6">
                 <h3 className="font-semibold text-cyan-300">{title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{body}</p>
+                <p className="mt-2 text-sm text-stone-400">{body}</p>
               </div>
             ))}
           </div>
@@ -97,40 +98,43 @@ export default function Home() {
 
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-2xl font-bold">From spend cube to savings program</h2>
-          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-slate-500">
-            Deterministic analytics: ingestion to Pareto segmentation, fuzzy de-duplication, contract-coverage maverick
-            detection, price-dispersion, transaction-cost modeling, and trackable initiatives.
+          <h2 className="text-center text-2xl font-bold">From spend cube to a savings program you can defend</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-stone-500">
+            A deterministic analytical sequence carries your data from ingestion through Pareto segmentation, fuzzy
+            de-duplication, contract-coverage maverick detection, price-dispersion analysis, and transaction-cost
+            modeling, into a set of trackable consolidation initiatives.
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div key={f.title} className="rounded-xl border border-slate-800 bg-slate-900/70 p-6 transition-colors hover:border-cyan-500/40">
+              <div key={f.title} className="rounded-xl border border-stone-800 bg-stone-900/70 p-6 transition-colors hover:border-cyan-500/40">
                 <h3 className="font-semibold text-white">{f.title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{f.body}</p>
+                <p className="mt-2 text-sm text-stone-400">{f.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-slate-800 bg-slate-900/30 px-6 py-20">
+      <section className="border-t border-stone-800 bg-stone-900/30 px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-bold">Built for the procurement cost-takeout program</h2>
-          <p className="mt-3 text-sm text-slate-400">
-            The analytical and project-management spine for CPOs, sourcing analysts, category managers, and the FP&A
-            partners who validate the savings. Board-ready narratives, not spreadsheets.
+          <p className="mt-3 text-sm text-stone-400">
+            This is the analytical and project-management spine for CPOs and VPs of Procurement who own a cost-takeout
+            target, the sourcing analysts who do the hands-on modeling, the category managers who run the
+            consolidation events, and the FP&A partners who must validate and book the savings. The output is a
+            board-ready narrative, not a spreadsheet.
           </p>
           <div className="mt-8">
-            <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400">
-              Create your workspace
+            <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-6 py-3 text-sm font-semibold text-stone-950 hover:bg-cyan-400">
+              Set up your workspace
             </Link>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-slate-800 px-6 py-10 text-center text-sm text-slate-600">
-        <p className="font-semibold text-slate-400">TailSpendConsolidationPlanner</p>
-        <p className="mt-1">Buy-side procurement spend rationalization. All features free for signed-in users.</p>
+      <footer className="border-t border-stone-800 px-6 py-10 text-center text-sm text-stone-600">
+        <p className="font-semibold text-stone-400">TailSpendConsolidationPlanner</p>
+        <p className="mt-1">Buy-side procurement spend rationalization, built for the enterprise sourcing function.</p>
       </footer>
     </main>
   )

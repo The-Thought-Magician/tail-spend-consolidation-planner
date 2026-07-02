@@ -233,7 +233,7 @@ export default function RecommendationsPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Recommendations</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Prioritized consolidation plays plotted by impact and effort. Convert the best into scenarios or initiatives.
           </p>
         </div>
@@ -272,24 +272,24 @@ export default function RecommendationsPage() {
           <Card>
             <CardHeader>
               <h2 className="text-base font-semibold text-white">Impact / Effort matrix</h2>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-stone-500">
                 Higher = more savings impact. Right = more effort. Bubble color encodes type.
               </p>
             </CardHeader>
             <CardBody>
               {filtered.length === 0 ? (
-                <p className="py-8 text-center text-sm text-slate-500">No recommendations match the current filters.</p>
+                <p className="py-8 text-center text-sm text-stone-500">No recommendations match the current filters.</p>
               ) : (
                 <div className="relative">
-                  <div className="relative ml-10 h-[420px] rounded-lg border border-slate-800 bg-slate-950/60">
+                  <div className="relative ml-10 h-[420px] rounded-lg border border-stone-800 bg-stone-950/60">
                     {/* quadrant divider lines */}
-                    <div className="pointer-events-none absolute inset-x-0 top-1/2 border-t border-dashed border-slate-700/60" />
-                    <div className="pointer-events-none absolute inset-y-0 left-1/2 border-l border-dashed border-slate-700/60" />
+                    <div className="pointer-events-none absolute inset-x-0 top-1/2 border-t border-dashed border-stone-700/60" />
+                    <div className="pointer-events-none absolute inset-y-0 left-1/2 border-l border-dashed border-stone-700/60" />
                     {/* quadrant labels */}
                     <span className="pointer-events-none absolute left-3 top-2 text-[10px] font-semibold uppercase tracking-wide text-emerald-400/70">Quick Wins</span>
                     <span className="pointer-events-none absolute right-3 top-2 text-[10px] font-semibold uppercase tracking-wide text-cyan-400/70">Major Projects</span>
-                    <span className="pointer-events-none absolute bottom-2 left-3 text-[10px] font-semibold uppercase tracking-wide text-slate-500">Fill-ins</span>
-                    <span className="pointer-events-none absolute bottom-2 right-3 text-[10px] font-semibold uppercase tracking-wide text-slate-500">Low Priority</span>
+                    <span className="pointer-events-none absolute bottom-2 left-3 text-[10px] font-semibold uppercase tracking-wide text-stone-500">Fill-ins</span>
+                    <span className="pointer-events-none absolute bottom-2 right-3 text-[10px] font-semibold uppercase tracking-wide text-stone-500">Low Priority</span>
 
                     {filtered.map((r) => {
                       const impact = num(r.impact)
@@ -303,13 +303,13 @@ export default function RecommendationsPage() {
                         amber: 'bg-amber-400 border-amber-200',
                         violet: 'bg-violet-400 border-violet-200',
                         rose: 'bg-rose-400 border-rose-200',
-                        slate: 'bg-slate-400 border-slate-200',
+                        slate: 'bg-stone-400 border-stone-200',
                       }
                       const size = 10 + Math.min(28, (impact / impactMax) * 28)
                       return (
                         <div
                           key={r.id}
-                          className="group absolute -translate-x-1/2 -translate-y-1/2"
+                          className="group absolute -transtone-x-1/2 -transtone-y-1/2"
                           style={{ left: `${x}%`, top: `${y}%` }}
                         >
                           <div
@@ -317,17 +317,17 @@ export default function RecommendationsPage() {
                             style={{ width: size, height: size }}
                             title={`${r.title} — impact ${fmtMoney(impact)}, effort ${effort}`}
                           />
-                          <div className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 hidden w-48 -translate-x-1/2 rounded-md border border-slate-700 bg-slate-900 p-2 text-xs text-slate-200 shadow-xl group-hover:block">
+                          <div className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 hidden w-48 -transtone-x-1/2 rounded-md border border-stone-700 bg-stone-900 p-2 text-xs text-stone-200 shadow-xl group-hover:block">
                             <div className="font-semibold">{r.title}</div>
-                            <div className="mt-1 text-slate-400">Impact {fmtMoney(impact)} · Effort {effort}</div>
+                            <div className="mt-1 text-stone-400">Impact {fmtMoney(impact)} · Effort {effort}</div>
                           </div>
                         </div>
                       )
                     })}
                   </div>
                   {/* axis labels */}
-                  <div className="mt-1 ml-10 text-center text-[10px] uppercase tracking-wide text-slate-500">Effort →</div>
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] uppercase tracking-wide text-slate-500">Impact →</div>
+                  <div className="mt-1 ml-10 text-center text-[10px] uppercase tracking-wide text-stone-500">Effort →</div>
+                  <div className="absolute left-0 top-1/2 -transtone-y-1/2 -rotate-90 text-[10px] uppercase tracking-wide text-stone-500">Impact →</div>
                 </div>
               )}
             </CardBody>
@@ -340,12 +340,12 @@ export default function RecommendationsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search..."
-                className="w-56 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+                className="w-56 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All types</option>
                 {types.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -353,7 +353,7 @@ export default function RecommendationsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All statuses</option>
                 <option value="open">Open</option>
@@ -361,7 +361,7 @@ export default function RecommendationsPage() {
                 <option value="dismissed">Dismissed</option>
                 <option value="converted">Converted</option>
               </select>
-              <span className="ml-auto text-xs text-slate-500">{filtered.length} shown</span>
+              <span className="ml-auto text-xs text-stone-500">{filtered.length} shown</span>
             </CardHeader>
             <CardBody className="p-0">
               {filtered.length === 0 ? (
@@ -393,17 +393,17 @@ export default function RecommendationsPage() {
                         return (
                           <TR key={r.id}>
                             <TD className="max-w-sm">
-                              <div className="font-medium text-slate-100">{r.title}</div>
-                              {r.rationale && <div className="mt-0.5 line-clamp-2 text-xs text-slate-500">{r.rationale}</div>}
+                              <div className="font-medium text-stone-100">{r.title}</div>
+                              {r.rationale && <div className="mt-0.5 line-clamp-2 text-xs text-stone-500">{r.rationale}</div>}
                             </TD>
                             <TD>
                               {r.type ? (
                                 <Badge tone={TYPE_TONES[(r.type || '').toLowerCase()] || 'slate'}>{r.type}</Badge>
-                              ) : <span className="text-slate-600">—</span>}
+                              ) : <span className="text-stone-600">—</span>}
                             </TD>
-                            <TD className="text-xs text-slate-400">{q}</TD>
+                            <TD className="text-xs text-stone-400">{q}</TD>
                             <TD className="text-right font-semibold tabular-nums text-emerald-300">{fmtMoney(impact)}</TD>
-                            <TD className="text-right tabular-nums text-slate-300">{effort || '—'}</TD>
+                            <TD className="text-right tabular-nums text-stone-300">{effort || '—'}</TD>
                             <TD><Badge tone={statusTone(r.status)}>{r.status || 'open'}</Badge></TD>
                             <TD>
                               <div className="flex flex-wrap justify-end gap-1">

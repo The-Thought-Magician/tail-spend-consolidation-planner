@@ -305,12 +305,12 @@ export default function PurchasingPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={tab === 'pos' ? 'Search PO # or supplier...' : 'Search invoice #, PO #, supplier...'}
-              className="w-full max-w-xs rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full max-w-xs rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
             <select
               value={supplierFilter}
               onChange={(e) => setSupplierFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All suppliers</option>
               {suppliers.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
@@ -318,13 +318,13 @@ export default function PurchasingPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All statuses</option>
               {statusOptions.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-stone-500">
             {tab === 'pos' ? `${filteredPos.length} of ${pos.length}` : `${filteredInvoices.length} of ${invoices.length}`}
           </span>
         </CardHeader>
@@ -354,9 +354,9 @@ export default function PurchasingPage() {
                 <TBody>
                   {filteredPos.map((p) => (
                     <TR key={p.id}>
-                      <TD className="font-medium text-slate-100">{p.po_number}</TD>
+                      <TD className="font-medium text-stone-100">{p.po_number}</TD>
                       <TD>{supplierName(p.supplier_id)}</TD>
-                      <TD className="text-right tabular-nums text-slate-100">{money(p.total_amount)}</TD>
+                      <TD className="text-right tabular-nums text-stone-100">{money(p.total_amount)}</TD>
                       <TD className="text-right tabular-nums">{p.line_count ?? 0}</TD>
                       <TD><Badge tone={statusTone(p.status)}>{p.status || 'unknown'}</Badge></TD>
                       <TD>{fmtDate(p.issued_date)}</TD>
@@ -395,10 +395,10 @@ export default function PurchasingPage() {
                 <TBody>
                   {filteredInvoices.map((iv) => (
                     <TR key={iv.id}>
-                      <TD className="font-medium text-slate-100">{iv.invoice_number}</TD>
+                      <TD className="font-medium text-stone-100">{iv.invoice_number}</TD>
                       <TD>{supplierName(iv.supplier_id)}</TD>
-                      <TD className="text-slate-400">{iv.po_number || '—'}</TD>
-                      <TD className="text-right tabular-nums text-slate-100">{money(iv.amount)}</TD>
+                      <TD className="text-stone-400">{iv.po_number || '—'}</TD>
+                      <TD className="text-right tabular-nums text-stone-100">{money(iv.amount)}</TD>
                       <TD><Badge tone={statusTone(iv.status)}>{iv.status || 'unknown'}</Badge></TD>
                       <TD>{fmtDate(iv.invoice_date)}</TD>
                       <TD className="text-right">
@@ -508,12 +508,12 @@ export default function PurchasingPage() {
   )
 }
 
-const inputCls = 'w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none'
+const inputCls = 'w-full rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none'
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}{required && <span className="text-cyan-400"> *</span>}
       </span>
       {children}
@@ -526,19 +526,19 @@ function Header({ tab, setTab, onNew, disabled }: { tab: Tab; setTab: (t: Tab) =
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 className="text-2xl font-bold text-white">Purchasing</h1>
-        <p className="mt-1 text-sm text-slate-500">Track purchase orders and supplier invoices feeding transaction-cost analysis.</p>
+        <p className="mt-1 text-sm text-stone-500">Track purchase orders and supplier invoices feeding transaction-cost analysis.</p>
       </div>
       <div className="flex items-center gap-3">
-        <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900/70 p-1">
+        <div className="inline-flex rounded-lg border border-stone-800 bg-stone-900/70 p-1">
           <button
             onClick={() => setTab('pos')}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${tab === 'pos' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${tab === 'pos' ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'}`}
           >
             Purchase Orders
           </button>
           <button
             onClick={() => setTab('invoices')}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${tab === 'invoices' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${tab === 'invoices' ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'}`}
           >
             Invoices
           </button>

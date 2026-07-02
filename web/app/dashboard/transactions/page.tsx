@@ -394,7 +394,7 @@ export default function TransactionsPage() {
           {contractSplitTotal > 0 && (
             <Card>
               <CardBody>
-                <div className="mb-2 flex items-center justify-between text-xs text-slate-400">
+                <div className="mb-2 flex items-center justify-between text-xs text-stone-400">
                   <span>
                     On-contract spend:{' '}
                     <span className="text-emerald-300">
@@ -408,7 +408,7 @@ export default function TransactionsPage() {
                     </span>
                   </span>
                 </div>
-                <div className="flex h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                <div className="flex h-3 w-full overflow-hidden rounded-full bg-stone-800">
                   <div
                     className="h-full bg-emerald-400"
                     style={{ width: `${onContractPct}%` }}
@@ -420,7 +420,7 @@ export default function TransactionsPage() {
                     title={`Off-contract ${(100 - onContractPct).toFixed(1)}%`}
                   />
                 </div>
-                <div className="mt-1 text-right text-xs text-slate-500">
+                <div className="mt-1 text-right text-xs text-stone-500">
                   {onContractPct.toFixed(1)}% on contract
                 </div>
               </CardBody>
@@ -433,7 +433,7 @@ export default function TransactionsPage() {
               <select
                 value={supplierFilter}
                 onChange={(e) => setSupplierFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All suppliers</option>
                 {suppliers.map((s) => (
@@ -445,7 +445,7 @@ export default function TransactionsPage() {
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All categories</option>
                 {categories.map((c) => (
@@ -458,12 +458,12 @@ export default function TransactionsPage() {
                 value={costCenter}
                 onChange={(e) => setCostCenter(e.target.value)}
                 placeholder="Cost center"
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
               />
               <select
                 value={onContract}
                 onChange={(e) => setOnContract(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">On/off contract</option>
                 <option value="true">On contract</option>
@@ -473,24 +473,24 @@ export default function TransactionsPage() {
                 type="date"
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
               <input
                 type="date"
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search PO / item..."
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </CardBody>
             {hasFilters && (
-              <div className="flex items-center justify-between border-t border-slate-800 px-5 py-2">
-                <span className="text-xs text-slate-500">Filters active</span>
+              <div className="flex items-center justify-between border-t border-stone-800 px-5 py-2">
+                <span className="text-xs text-stone-500">Filters active</span>
                 <button
                   onClick={clearFilters}
                   className="text-xs text-cyan-400 hover:text-cyan-300"
@@ -520,7 +520,7 @@ export default function TransactionsPage() {
           <Card>
             <CardHeader className="flex items-center justify-between">
               <h2 className="text-sm font-semibold text-white">Spend Transactions</h2>
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-stone-500">
                 {total.toLocaleString()} total {tableLoading && '· loading...'}
               </span>
             </CardHeader>
@@ -579,14 +579,14 @@ export default function TransactionsPage() {
                             className="accent-cyan-500"
                           />
                         </TD>
-                        <TD className="whitespace-nowrap text-slate-400">{fmtDate(t.txn_date)}</TD>
-                        <TD className="text-slate-200">{supplierName(t.supplier_id)}</TD>
+                        <TD className="whitespace-nowrap text-stone-400">{fmtDate(t.txn_date)}</TD>
+                        <TD className="text-stone-200">{supplierName(t.supplier_id)}</TD>
                         <TD>{categoryName(t.category_id)}</TD>
-                        <TD className="text-slate-400">
+                        <TD className="text-stone-400">
                           {t.po_number || t.invoice_number || '—'}
                         </TD>
-                        <TD className="text-slate-400">{t.cost_center || '—'}</TD>
-                        <TD className="text-right font-medium text-slate-100">
+                        <TD className="text-stone-400">{t.cost_center || '—'}</TD>
+                        <TD className="text-right font-medium text-stone-100">
                           {fmtCurrencyExact(t.amount)}
                         </TD>
                         <TD>
@@ -600,13 +600,13 @@ export default function TransactionsPage() {
                           <div className="flex justify-end gap-1">
                             <button
                               onClick={() => openEdit(t)}
-                              className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
+                              className="rounded px-2 py-1 text-xs text-stone-400 hover:bg-stone-800 hover:text-white"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => removeOne(t)}
-                              className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-rose-300"
+                              className="rounded px-2 py-1 text-xs text-stone-400 hover:bg-stone-800 hover:text-rose-300"
                             >
                               Delete
                             </button>
@@ -619,8 +619,8 @@ export default function TransactionsPage() {
               )}
             </CardBody>
             {total > PAGE_SIZE && (
-              <div className="flex items-center justify-between border-t border-slate-800 px-5 py-3 text-sm">
-                <span className="text-slate-500">
+              <div className="flex items-center justify-between border-t border-stone-800 px-5 py-3 text-sm">
+                <span className="text-stone-500">
                   Page {page} of {totalPages}
                 </span>
                 <div className="flex gap-2">
@@ -672,7 +672,7 @@ export default function TransactionsPage() {
               <select
                 value={form.supplier_id}
                 onChange={(e) => setForm({ ...form, supplier_id: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">— Unassigned —</option>
                 {suppliers.map((s) => (
@@ -686,7 +686,7 @@ export default function TransactionsPage() {
               <select
                 value={form.category_id}
                 onChange={(e) => setForm({ ...form, category_id: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">— Uncategorized —</option>
                 {categories.map((c) => (
@@ -703,14 +703,14 @@ export default function TransactionsPage() {
                 value={form.amount}
                 onChange={(e) => setForm({ ...form, amount: e.target.value })}
                 placeholder="0.00"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Currency">
               <input
                 value={form.currency}
                 onChange={(e) => setForm({ ...form, currency: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Transaction Date">
@@ -718,42 +718,42 @@ export default function TransactionsPage() {
                 type="date"
                 value={form.txn_date}
                 onChange={(e) => setForm({ ...form, txn_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Cost Center">
               <input
                 value={form.cost_center}
                 onChange={(e) => setForm({ ...form, cost_center: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="PO Number">
               <input
                 value={form.po_number}
                 onChange={(e) => setForm({ ...form, po_number: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Invoice Number">
               <input
                 value={form.invoice_number}
                 onChange={(e) => setForm({ ...form, invoice_number: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Item Key">
               <input
                 value={form.item_key}
                 onChange={(e) => setForm({ ...form, item_key: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="UoM">
               <input
                 value={form.uom}
                 onChange={(e) => setForm({ ...form, uom: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Quantity">
@@ -762,7 +762,7 @@ export default function TransactionsPage() {
                 step="any"
                 value={form.quantity}
                 onChange={(e) => setForm({ ...form, quantity: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Unit Price">
@@ -771,11 +771,11 @@ export default function TransactionsPage() {
                 step="any"
                 value={form.unit_price}
                 onChange={(e) => setForm({ ...form, unit_price: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={form.is_on_contract}
@@ -795,7 +795,7 @@ function Header({ onCreate, disabled }: { onCreate: () => void; disabled?: boole
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Transactions</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-stone-500">
           Line-level spend with filters, contract coverage, and summary metrics.
         </p>
       </div>
@@ -809,7 +809,7 @@ function Header({ onCreate, disabled }: { onCreate: () => void; disabled?: boole
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}
       </span>
       {children}

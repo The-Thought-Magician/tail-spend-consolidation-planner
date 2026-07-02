@@ -220,11 +220,11 @@ export default function DispersionPage() {
           <Card>
             <CardHeader>
               <h2 className="text-sm font-semibold text-white">Cost of fragmentation by category</h2>
-              <p className="text-xs text-slate-500">Addressable savings from price harmonization across categories</p>
+              <p className="text-xs text-stone-500">Addressable savings from price harmonization across categories</p>
             </CardHeader>
             <CardBody>
               {byCategory.length === 0 ? (
-                <p className="text-sm text-slate-500">No category breakdown yet. Run compute to populate dispersion stats.</p>
+                <p className="text-sm text-stone-500">No category breakdown yet. Run compute to populate dispersion stats.</p>
               ) : (
                 <div className="space-y-3">
                   {[...byCategory]
@@ -232,10 +232,10 @@ export default function DispersionPage() {
                     .map((c) => (
                       <div key={c.id}>
                         <div className="mb-1 flex items-center justify-between text-xs">
-                          <span className="truncate text-slate-300">{c.name}</span>
+                          <span className="truncate text-stone-300">{c.name}</span>
                           <span className="font-medium text-amber-300">{money(c.savings)}</span>
                         </div>
-                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                           <div
                             className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-amber-500"
                             style={{ width: `${Math.min(100, (c.savings / maxCatSavings) * 100)}%` }}
@@ -252,19 +252,19 @@ export default function DispersionPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Price dispersion by item</h2>
-                <p className="text-xs text-slate-500">{filtered.length} of {rows.length} items</p>
+                <p className="text-xs text-stone-500">{filtered.length} of {rows.length} items</p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search items..."
-                  className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-44 rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="all">All categories</option>
                   {categories.map((c) => (
@@ -276,7 +276,7 @@ export default function DispersionPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'savings' | 'dispersion')}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="savings">Sort: Savings</option>
                   <option value="dispersion">Sort: Dispersion</option>
@@ -331,16 +331,16 @@ export default function DispersionPage() {
                       return (
                         <TR key={r.id}>
                           <TD>
-                            <div className="font-mono text-xs text-slate-200">{r.item_key || '—'}</div>
-                            <div className="text-[11px] text-slate-500">
+                            <div className="font-mono text-xs text-stone-200">{r.item_key || '—'}</div>
+                            <div className="text-[11px] text-stone-500">
                               {r.category_id ? catName.get(r.category_id) || 'Category' : 'Uncategorized'}
                             </div>
                           </TD>
-                          <TD className="text-right tabular-nums text-slate-400">{price(min)}</TD>
-                          <TD className="text-right tabular-nums text-slate-200">{price(median)}</TD>
-                          <TD className="text-right tabular-nums text-slate-400">{price(max)}</TD>
+                          <TD className="text-right tabular-nums text-stone-400">{price(min)}</TD>
+                          <TD className="text-right tabular-nums text-stone-200">{price(median)}</TD>
+                          <TD className="text-right tabular-nums text-stone-400">{price(max)}</TD>
                           <TD>
-                            <div className="relative h-3 w-32 rounded-full bg-slate-800">
+                            <div className="relative h-3 w-32 rounded-full bg-stone-800">
                               <div
                                 className="absolute top-0 h-3 rounded-full bg-cyan-500/30"
                                 style={{ left: `${Math.max(0, boxLeft)}%`, width: `${Math.min(100, Math.max(2, boxWidth))}%` }}
@@ -354,7 +354,7 @@ export default function DispersionPage() {
                           <TD className="text-right">
                             <Badge tone={dispersionTone(idx)}>{idx.toFixed(2)}</Badge>
                           </TD>
-                          <TD className="text-right tabular-nums text-slate-400">
+                          <TD className="text-right tabular-nums text-stone-400">
                             {num(r.total_quantity).toLocaleString()}
                           </TD>
                           <TD className="text-right font-semibold tabular-nums text-amber-300">
@@ -387,7 +387,7 @@ function Header({
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Price Dispersion</h1>
-        <p className="text-sm text-slate-500">Per-item price spread, dispersion index, and the cost of fragmentation.</p>
+        <p className="text-sm text-stone-500">Per-item price spread, dispersion index, and the cost of fragmentation.</p>
       </div>
       <Button onClick={onCompute} disabled={computing || disabled}>
         {computing ? 'Computing...' : 'Compute dispersion'}

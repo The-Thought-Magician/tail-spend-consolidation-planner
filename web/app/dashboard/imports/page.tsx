@@ -354,7 +354,7 @@ export default function ImportsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-xl font-bold text-white">Imports</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-stone-500">
           Upload spend data, map columns, dry-run a preview, then commit. Roll back any batch.
         </p>
       </div>
@@ -373,11 +373,11 @@ export default function ImportsPage() {
         <CardBody className="space-y-5">
           <div className="flex flex-wrap items-end gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Entity</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Entity</label>
               <select
                 value={entity}
                 onChange={(e) => onEntityChange(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
               >
                 {ENTITIES.map((en) => (
                   <option key={en.value} value={en.value}>
@@ -387,13 +387,13 @@ export default function ImportsPage() {
               </select>
             </div>
             <div className="flex-1">
-              <label className="mb-1 block text-xs font-medium text-slate-400">CSV file</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">CSV file</label>
               <input
                 ref={fileRef}
                 type="file"
                 accept=".csv,text/csv"
                 onChange={onFile}
-                className="block w-full text-sm text-slate-400 file:mr-3 file:rounded-lg file:border-0 file:bg-slate-800 file:px-4 file:py-2 file:text-sm file:font-medium file:text-cyan-300 hover:file:bg-slate-700"
+                className="block w-full text-sm text-stone-400 file:mr-3 file:rounded-lg file:border-0 file:bg-stone-800 file:px-4 file:py-2 file:text-sm file:font-medium file:text-cyan-300 hover:file:bg-stone-700"
               />
             </div>
             {fileName && (
@@ -411,26 +411,26 @@ export default function ImportsPage() {
 
           {headers.length > 0 && (
             <>
-              <div className="text-xs text-slate-500">
-                <span className="font-medium text-slate-400">{fileName}</span> · {headers.length} columns ·{' '}
+              <div className="text-xs text-stone-500">
+                <span className="font-medium text-stone-400">{fileName}</span> · {headers.length} columns ·{' '}
                 {rows.length} data rows
               </div>
 
               {/* Column mapping */}
               <div>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                   Column mapping
                 </h3>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {targetFields.map((field) => (
                     <div key={field}>
-                      <label className="mb-1 block text-xs font-medium text-slate-400">{field}</label>
+                      <label className="mb-1 block text-xs font-medium text-stone-400">{field}</label>
                       <select
                         value={mapping[field] ?? ''}
                         onChange={(e) =>
                           setMapping((prev) => ({ ...prev, [field]: e.target.value }))
                         }
-                        className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                        className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
                       >
                         <option value="">— ignore —</option>
                         {headers.map((h) => (
@@ -447,7 +447,7 @@ export default function ImportsPage() {
               {/* Raw preview of first rows */}
               {rows.length > 0 && (
                 <div>
-                  <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                     File preview (first 5 rows)
                   </h3>
                   <Table>
@@ -492,7 +492,7 @@ export default function ImportsPage() {
 
               {/* Preview result */}
               {preview && (
-                <div className="space-y-4 rounded-lg border border-slate-800 bg-slate-900/50 p-4">
+                <div className="space-y-4 rounded-lg border border-stone-800 bg-stone-900/50 p-4">
                   <div className="flex flex-wrap gap-3">
                     <Badge tone="green">{acceptedCount} accepted</Badge>
                     <Badge tone={rejectedCount > 0 ? 'rose' : 'slate'}>{rejectedCount} rejected</Badge>
@@ -500,7 +500,7 @@ export default function ImportsPage() {
 
                   {sampleRows.length > 0 && (
                     <div>
-                      <div className="mb-1 text-xs font-medium text-slate-400">Accepted sample</div>
+                      <div className="mb-1 text-xs font-medium text-stone-400">Accepted sample</div>
                       <Table>
                         <THead>
                           <TR>
@@ -527,7 +527,7 @@ export default function ImportsPage() {
                   {Array.isArray(preview.rejected) && preview.rejected.length > 0 && (
                     <div>
                       <div className="mb-1 text-xs font-medium text-rose-300">Rejected rows</div>
-                      <ul className="max-h-40 space-y-1 overflow-y-auto text-xs text-slate-400">
+                      <ul className="max-h-40 space-y-1 overflow-y-auto text-xs text-stone-400">
                         {preview.rejected.slice(0, 50).map((rej, i) => (
                           <li key={i} className="rounded bg-rose-950/30 px-2 py-1">
                             {rej.row != null && <span className="font-mono text-rose-400">row {rej.row}: </span>}
@@ -557,15 +557,15 @@ export default function ImportsPage() {
               {connectors.map((c, i) => (
                 <div
                   key={c.id ?? c.key ?? i}
-                  className="rounded-lg border border-slate-800 bg-slate-900/50 p-4"
+                  className="rounded-lg border border-stone-800 bg-stone-900/50 p-4"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-slate-200">{c.name ?? c.key ?? c.id}</span>
+                    <span className="text-sm font-medium text-stone-200">{c.name ?? c.key ?? c.id}</span>
                     <Badge tone={statusTone(c.status)} className="capitalize">
                       {c.status ?? 'available'}
                     </Badge>
                   </div>
-                  {c.description && <p className="mt-1 text-xs text-slate-500">{c.description}</p>}
+                  {c.description && <p className="mt-1 text-xs text-stone-500">{c.description}</p>}
                 </div>
               ))}
             </div>
@@ -601,10 +601,10 @@ export default function ImportsPage() {
               <TBody>
                 {history.map((row) => (
                   <TR key={row.id}>
-                    <TD className="capitalize text-slate-200">
+                    <TD className="capitalize text-stone-200">
                       {String(row.entity ?? '—').replace(/_/g, ' ')}
                     </TD>
-                    <TD className="text-xs text-slate-500">{row.source_type ?? 'csv'}</TD>
+                    <TD className="text-xs text-stone-500">{row.source_type ?? 'csv'}</TD>
                     <TD>
                       <Badge tone={statusTone(row.status)} className="capitalize">
                         {String(row.status ?? 'unknown').replace(/_/g, ' ')}
@@ -613,7 +613,7 @@ export default function ImportsPage() {
                     <TD className="text-right">{row.row_count ?? '—'}</TD>
                     <TD className="text-right text-emerald-300">{row.accepted_count ?? '—'}</TD>
                     <TD className="text-right text-rose-300">{row.rejected_count ?? '—'}</TD>
-                    <TD className="text-xs text-slate-500">
+                    <TD className="text-xs text-stone-500">
                       {row.created_at ? new Date(row.created_at).toLocaleString() : '—'}
                     </TD>
                     <TD className="text-right">
@@ -659,24 +659,24 @@ export default function ImportsPage() {
           <div className="space-y-4 text-sm">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <div className="text-xs text-slate-500">Entity</div>
-                <div className="capitalize text-slate-200">
+                <div className="text-xs text-stone-500">Entity</div>
+                <div className="capitalize text-stone-200">
                   {String(detail.entity ?? '—').replace(/_/g, ' ')}
                 </div>
               </div>
               <div>
-                <div className="text-xs text-slate-500">Status</div>
+                <div className="text-xs text-stone-500">Status</div>
                 <Badge tone={statusTone(detail.status)} className="capitalize">
                   {String(detail.status ?? 'unknown').replace(/_/g, ' ')}
                 </Badge>
               </div>
               <div>
-                <div className="text-xs text-slate-500">Rows</div>
-                <div className="text-slate-200">{detail.row_count ?? '—'}</div>
+                <div className="text-xs text-stone-500">Rows</div>
+                <div className="text-stone-200">{detail.row_count ?? '—'}</div>
               </div>
               <div>
-                <div className="text-xs text-slate-500">Accepted / Rejected</div>
-                <div className="text-slate-200">
+                <div className="text-xs text-stone-500">Accepted / Rejected</div>
+                <div className="text-stone-200">
                   <span className="text-emerald-300">{detail.accepted_count ?? 0}</span> /{' '}
                   <span className="text-rose-300">{detail.rejected_count ?? 0}</span>
                 </div>
@@ -685,12 +685,12 @@ export default function ImportsPage() {
 
             {detail.mapping && Object.keys(detail.mapping).length > 0 && (
               <div>
-                <div className="mb-1 text-xs font-medium text-slate-400">Column mapping</div>
-                <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-3">
+                <div className="mb-1 text-xs font-medium text-stone-400">Column mapping</div>
+                <div className="rounded-lg border border-stone-800 bg-stone-950/50 p-3">
                   {Object.entries(detail.mapping).map(([field, header]) => (
                     <div key={field} className="flex justify-between py-0.5 text-xs">
-                      <span className="text-slate-400">{field}</span>
-                      <span className="font-mono text-slate-300">{String(header)}</span>
+                      <span className="text-stone-400">{field}</span>
+                      <span className="font-mono text-stone-300">{String(header)}</span>
                     </div>
                   ))}
                 </div>

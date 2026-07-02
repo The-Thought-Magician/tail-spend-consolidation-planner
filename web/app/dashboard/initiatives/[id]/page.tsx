@@ -360,9 +360,9 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
             <Badge tone={statusTone[initiative.status || 'proposed'] || 'slate'}>{labelize(initiative.status)}</Badge>
           </div>
           {initiative.description && (
-            <p className="mt-2 max-w-2xl text-sm text-slate-400">{initiative.description}</p>
+            <p className="mt-2 max-w-2xl text-sm text-stone-400">{initiative.description}</p>
           )}
-          <div className="mt-2 flex flex-wrap gap-4 text-xs text-slate-500">
+          <div className="mt-2 flex flex-wrap gap-4 text-xs text-stone-500">
             <span>Start: {initiative.start_date ? new Date(initiative.start_date).toLocaleDateString() : '—'}</span>
             <span>Due: {initiative.due_date ? new Date(initiative.due_date).toLocaleDateString() : '—'}</span>
             {initiative.scenario_id && (
@@ -387,28 +387,28 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Milestones</h2>
-            <p className="text-xs text-slate-500">{msProgress}% complete · {milestones.length} total</p>
+            <p className="text-xs text-stone-500">{msProgress}% complete · {milestones.length} total</p>
           </div>
           <Button variant="secondary" onClick={() => { setMsForm({ title: '', due_date: '', status: 'pending' }); setMsError(null); setMsOpen(true) }}>
             + Milestone
           </Button>
         </CardHeader>
         <CardBody className="space-y-3">
-          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
             <div className="h-full rounded-full bg-emerald-400" style={{ width: `${msProgress}%` }} />
           </div>
           {milestones.length === 0 ? (
             <EmptyState title="No milestones yet" description="Break the initiative into trackable steps." icon="🪜" />
           ) : (
-            <ul className="divide-y divide-slate-800/70">
+            <ul className="divide-y divide-stone-800/70">
               {milestones.map((m) => (
                 <li key={m.id} className="flex items-center justify-between gap-3 py-2.5">
                   <div className="flex items-center gap-3">
-                    <span className={`text-sm ${m.status === 'done' ? 'text-slate-500 line-through' : 'text-slate-200'}`}>
+                    <span className={`text-sm ${m.status === 'done' ? 'text-stone-500 line-through' : 'text-stone-200'}`}>
                       {m.title}
                     </span>
                     {m.due_date && (
-                      <span className="text-xs text-slate-600">due {new Date(m.due_date).toLocaleDateString()}</span>
+                      <span className="text-xs text-stone-600">due {new Date(m.due_date).toLocaleDateString()}</span>
                     )}
                   </div>
                   <button
@@ -433,7 +433,7 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Savings ledger</h2>
-            <p className="text-xs text-slate-500">Target vs realized by period</p>
+            <p className="text-xs text-stone-500">Target vs realized by period</p>
           </div>
           <Button variant="secondary" onClick={() => { setSvForm({ period: '', type: 'target', target_amount: '', realized_amount: '', note: '' }); setSvError(null); setSvOpen(true) }}>
             + Book savings
@@ -458,11 +458,11 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
               <TBody>
                 {savings.map((s) => (
                   <TR key={s.id}>
-                    <TD className="font-medium text-slate-200">{s.period || '—'}</TD>
+                    <TD className="font-medium text-stone-200">{s.period || '—'}</TD>
                     <TD><Badge tone={s.type === 'realized' ? 'green' : 'cyan'}>{labelize(s.type)}</Badge></TD>
-                    <TD className="text-right tabular-nums text-slate-300">{fmtMoney(s.target_amount)}</TD>
+                    <TD className="text-right tabular-nums text-stone-300">{fmtMoney(s.target_amount)}</TD>
                     <TD className="text-right font-semibold tabular-nums text-emerald-300">{fmtMoney(s.realized_amount)}</TD>
-                    <TD className="text-slate-500">{s.note || '—'}</TD>
+                    <TD className="text-stone-500">{s.note || '—'}</TD>
                   </TR>
                 ))}
               </TBody>
@@ -483,7 +483,7 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
               onChange={(e) => setCommentBody(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); postComment() } }}
               placeholder="Add a comment..."
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
             <Button onClick={postComment} disabled={postingComment || !commentBody.trim()}>
               {postingComment ? 'Posting...' : 'Post'}
@@ -493,16 +493,16 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
             <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{commentError}</div>
           )}
           {comments.length === 0 ? (
-            <p className="text-sm text-slate-500">No comments yet. Start the conversation.</p>
+            <p className="text-sm text-stone-500">No comments yet. Start the conversation.</p>
           ) : (
             <ul className="space-y-3">
               {comments.map((c) => (
-                <li key={c.id} className="rounded-lg border border-slate-800 bg-slate-950/60 px-4 py-3">
-                  <div className="flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-medium text-slate-400">{c.user_id ? c.user_id.slice(0, 8) : 'User'}</span>
+                <li key={c.id} className="rounded-lg border border-stone-800 bg-stone-950/60 px-4 py-3">
+                  <div className="flex items-center justify-between text-xs text-stone-500">
+                    <span className="font-medium text-stone-400">{c.user_id ? c.user_id.slice(0, 8) : 'User'}</span>
                     <span>{c.created_at ? new Date(c.created_at).toLocaleString() : ''}</span>
                   </div>
-                  <p className="mt-1 whitespace-pre-wrap text-sm text-slate-200">{c.body}</p>
+                  <p className="mt-1 whitespace-pre-wrap text-sm text-stone-200">{c.body}</p>
                 </li>
               ))}
             </ul>
@@ -527,60 +527,60 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
             <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{editError}</div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Title</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Title</label>
             <input
               value={edit.title}
               onChange={(e) => setEdit({ ...edit, title: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={edit.description}
               onChange={(e) => setEdit({ ...edit, description: e.target.value })}
               rows={3}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Status</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Status</label>
               <select
                 value={edit.status}
                 onChange={(e) => setEdit({ ...edit, status: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {STATUSES.map((s) => <option key={s} value={s}>{labelize(s)}</option>)}
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Target ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Target ($)</label>
               <input
                 type="number"
                 value={edit.target_savings}
                 onChange={(e) => setEdit({ ...edit, target_savings: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Start</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Start</label>
               <input
                 type="date"
                 value={edit.start_date}
                 onChange={(e) => setEdit({ ...edit, start_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Due</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Due</label>
               <input
                 type="date"
                 value={edit.due_date}
                 onChange={(e) => setEdit({ ...edit, due_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
@@ -604,33 +604,33 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
             <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{msError}</div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Title</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Title</label>
             <input
               value={msForm.title}
               onChange={(e) => setMsForm({ ...msForm, title: e.target.value })}
               placeholder="e.g. Sign master agreement"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               autoFocus
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Status</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Status</label>
               <select
                 value={msForm.status}
                 onChange={(e) => setMsForm({ ...msForm, status: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {MILESTONE_STATUSES.map((s) => <option key={s} value={s}>{labelize(s)}</option>)}
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Due</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Due</label>
               <input
                 type="date"
                 value={msForm.due_date}
                 onChange={(e) => setMsForm({ ...msForm, due_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
@@ -655,21 +655,21 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
           )}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Period</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Period</label>
               <input
                 value={svForm.period}
                 onChange={(e) => setSvForm({ ...svForm, period: e.target.value })}
                 placeholder="2026-Q1"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 autoFocus
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Type</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Type</label>
               <select
                 value={svForm.type}
                 onChange={(e) => setSvForm({ ...svForm, type: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="target">Target</option>
                 <option value="realized">Realized</option>
@@ -678,30 +678,30 @@ export default function InitiativeDetailPage({ params }: { params: Promise<{ id:
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Target ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Target ($)</label>
               <input
                 type="number"
                 value={svForm.target_amount}
                 onChange={(e) => setSvForm({ ...svForm, target_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Realized ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Realized ($)</label>
               <input
                 type="number"
                 value={svForm.realized_amount}
                 onChange={(e) => setSvForm({ ...svForm, realized_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Note</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Note</label>
             <input
               value={svForm.note}
               onChange={(e) => setSvForm({ ...svForm, note: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </div>

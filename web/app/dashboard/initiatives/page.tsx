@@ -232,7 +232,7 @@ export default function InitiativesPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Initiative Portfolio</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Drive consolidation savings from idea to realized value. Track owners, due dates, and target savings.
           </p>
         </div>
@@ -267,14 +267,14 @@ export default function InitiativesPage() {
             const pct = Math.round((count / maxStatusCount) * 100)
             return (
               <div key={s} className="flex items-center gap-3">
-                <div className="w-28 shrink-0 text-xs text-slate-400">{labelize(s)}</div>
-                <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-800">
+                <div className="w-28 shrink-0 text-xs text-stone-400">{labelize(s)}</div>
+                <div className="h-3 flex-1 overflow-hidden rounded-full bg-stone-800">
                   <div
                     className="h-full rounded-full bg-cyan-500/70"
                     style={{ width: `${count === 0 ? 0 : Math.max(pct, 4)}%` }}
                   />
                 </div>
-                <div className="w-8 shrink-0 text-right text-xs tabular-nums text-slate-300">{count}</div>
+                <div className="w-8 shrink-0 text-right text-xs tabular-nums text-stone-300">{count}</div>
               </div>
             )
           })}
@@ -288,12 +288,12 @@ export default function InitiativesPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search initiatives..."
-              className="w-56 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-56 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All statuses</option>
               {STATUSES.map((s) => (
@@ -301,7 +301,7 @@ export default function InitiativesPage() {
               ))}
             </select>
           </div>
-          <span className="text-xs text-slate-500">{filtered.length} of {initiatives.length}</span>
+          <span className="text-xs text-stone-500">{filtered.length} of {initiatives.length}</span>
         </CardHeader>
         <CardBody className="p-0">
           {filtered.length === 0 ? (
@@ -344,14 +344,14 @@ export default function InitiativesPage() {
                         {i.title}
                       </Link>
                       {i.description && (
-                        <div className="mt-0.5 max-w-md truncate text-xs text-slate-500">{i.description}</div>
+                        <div className="mt-0.5 max-w-md truncate text-xs text-stone-500">{i.description}</div>
                       )}
                     </TD>
                     <TD>
                       {i.category_id ? (
                         <Badge tone="slate">{catName.get(i.category_id) || 'Category'}</Badge>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
                     <TD>
@@ -360,7 +360,7 @@ export default function InitiativesPage() {
                     <TD className="text-right font-semibold tabular-nums text-emerald-300">
                       {fmtMoney(i.target_savings)}
                     </TD>
-                    <TD className="text-slate-500">
+                    <TD className="text-stone-500">
                       {i.due_date ? new Date(i.due_date).toLocaleDateString() : '—'}
                     </TD>
                     <TD className="text-right">
@@ -404,32 +404,32 @@ export default function InitiativesPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Title</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Title</label>
             <input
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="e.g. Consolidate MRO suppliers in EMEA"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               autoFocus
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
               placeholder="What is the consolidation play and expected outcome?"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Category</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Category</label>
               <select
                 value={form.category_id}
                 onChange={(e) => setForm({ ...form, category_id: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">No category</option>
                 {categories.map((c) => (
@@ -438,11 +438,11 @@ export default function InitiativesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Status</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Status</label>
               <select
                 value={form.status}
                 onChange={(e) => setForm({ ...form, status: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {STATUSES.map((s) => (
                   <option key={s} value={s}>{labelize(s)}</option>
@@ -452,31 +452,31 @@ export default function InitiativesPage() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Target ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Target ($)</label>
               <input
                 type="number"
                 value={form.target_savings}
                 onChange={(e) => setForm({ ...form, target_savings: e.target.value })}
                 placeholder="0"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Start</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Start</label>
               <input
                 type="date"
                 value={form.start_date}
                 onChange={(e) => setForm({ ...form, start_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Due</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Due</label>
               <input
                 type="date"
                 value={form.due_date}
                 onChange={(e) => setForm({ ...form, due_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>

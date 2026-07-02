@@ -218,7 +218,7 @@ export default function ScenariosPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Consolidation Scenarios</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Model supplier consolidation moves and compare projected savings side by side.
           </p>
         </div>
@@ -249,12 +249,12 @@ export default function ScenariosPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search scenarios..."
-              className="w-56 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-56 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
             <select
               value={catFilter}
               onChange={(e) => setCatFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All categories</option>
               {categories.map((c) => (
@@ -263,7 +263,7 @@ export default function ScenariosPage() {
             </select>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-stone-500">
               {selected.length} selected
             </span>
             <Button
@@ -335,16 +335,16 @@ export default function ScenariosPage() {
                       {s.category_id ? (
                         <Badge tone="slate">{catName.get(s.category_id) || 'Category'}</Badge>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
-                    <TD className="text-right tabular-nums text-slate-400">
+                    <TD className="text-right tabular-nums text-stone-400">
                       {(s.from_supplier_ids?.length ?? 0)} → {(s.to_supplier_ids?.length ?? 0)}
                     </TD>
                     <TD className="text-right font-semibold tabular-nums text-emerald-300">
                       {fmtMoney(s.modeled_savings)}
                     </TD>
-                    <TD className="text-slate-500">
+                    <TD className="text-stone-500">
                       {s.updated_at ? new Date(s.updated_at).toLocaleDateString() : '—'}
                     </TD>
                     <TD className="text-right">
@@ -390,23 +390,23 @@ export default function ScenariosPage() {
                 const sv = num(s.modeled_savings)
                 const pct = Math.round((sv / maxCompareSavings) * 100)
                 return (
-                  <div key={s.id} className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+                  <div key={s.id} className="rounded-xl border border-stone-800 bg-stone-950/60 p-4">
                     <div className="truncate text-sm font-semibold text-white" title={s.name}>{s.name}</div>
                     {s.category_id && (
-                      <div className="mt-1 text-xs text-slate-500">{catName.get(s.category_id) || 'Category'}</div>
+                      <div className="mt-1 text-xs text-stone-500">{catName.get(s.category_id) || 'Category'}</div>
                     )}
                     <div className="mt-3 text-xl font-bold text-emerald-300">{fmtMoney(sv)}</div>
-                    <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-stone-800">
                       <div className="h-full rounded-full bg-emerald-400" style={{ width: `${pct}%` }} />
                     </div>
-                    <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-400">
+                    <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-stone-400">
                       <div>
-                        <div className="text-slate-600">From</div>
-                        <div className="font-medium text-slate-200">{s.from_supplier_ids?.length ?? 0}</div>
+                        <div className="text-stone-600">From</div>
+                        <div className="font-medium text-stone-200">{s.from_supplier_ids?.length ?? 0}</div>
                       </div>
                       <div>
-                        <div className="text-slate-600">To</div>
-                        <div className="font-medium text-slate-200">{s.to_supplier_ids?.length ?? 0}</div>
+                        <div className="text-stone-600">To</div>
+                        <div className="font-medium text-stone-200">{s.to_supplier_ids?.length ?? 0}</div>
                       </div>
                     </div>
                     <Link href={`/dashboard/scenarios/${s.id}`} className="mt-3 block text-xs font-medium text-cyan-300 hover:text-cyan-200">
@@ -438,21 +438,21 @@ export default function ScenariosPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Name</label>
             <input
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="e.g. Consolidate office supplies"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               autoFocus
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Category (optional)</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Category (optional)</label>
             <select
               value={newCat}
               onChange={(e) => setNewCat(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">No category</option>
               {categories.map((c) => (

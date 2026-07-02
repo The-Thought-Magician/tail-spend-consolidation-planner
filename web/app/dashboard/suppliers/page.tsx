@@ -176,7 +176,7 @@ export default function SuppliersPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Suppliers</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Your supplier master. Search, classify, and merge duplicates to shrink the long tail.
           </p>
         </div>
@@ -224,12 +224,12 @@ export default function SuppliersPage() {
                         value={q}
                         onChange={(e) => setQ(e.target.value)}
                         placeholder="Search name..."
-                        className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+                        className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-white placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
                       />
                       <select
                         value={categoryFilter}
                         onChange={(e) => setCategoryFilter(e.target.value)}
-                        className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-white focus:border-cyan-500 focus:outline-none"
+                        className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-white focus:border-cyan-500 focus:outline-none"
                       >
                         <option value="">All categories</option>
                         {categories.map((c) => (
@@ -277,16 +277,16 @@ export default function SuppliersPage() {
                                 >
                                   {s.name}
                                 </Link>
-                                {s.country && <span className="ml-2 text-xs text-slate-500">{s.country}</span>}
+                                {s.country && <span className="ml-2 text-xs text-stone-500">{s.country}</span>}
                               </TD>
-                              <TD className="text-slate-400">
+                              <TD className="text-stone-400">
                                 {s.category_id ? catName.get(s.category_id) || '—' : '—'}
                               </TD>
                               <TD>
                                 <Badge tone={statusTone(s.status)}>{s.status ?? 'active'}</Badge>
                               </TD>
                               <TD className="text-right">{money(s.spend)}</TD>
-                              <TD className="text-right text-slate-400">{Number(s.txn_count || 0).toLocaleString()}</TD>
+                              <TD className="text-right text-stone-400">{Number(s.txn_count || 0).toLocaleString()}</TD>
                               <TD className="text-right">
                                 <div className="flex justify-end gap-2">
                                   <Link href={`/dashboard/suppliers/${s.id}`}>
@@ -314,7 +314,7 @@ export default function SuppliersPage() {
                     <select
                       value={topBy}
                       onChange={(e) => setTopBy(e.target.value as 'spend' | 'txn_count')}
-                      className="rounded-lg border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-white focus:border-cyan-500 focus:outline-none"
+                      className="rounded-lg border border-stone-700 bg-stone-800 px-2 py-1 text-xs text-white focus:border-cyan-500 focus:outline-none"
                     >
                       <option value="spend">By spend</option>
                       <option value="txn_count">By txn count</option>
@@ -322,7 +322,7 @@ export default function SuppliersPage() {
                   </CardHeader>
                   <CardBody>
                     {top.length === 0 ? (
-                      <p className="text-sm text-slate-500">No data yet.</p>
+                      <p className="text-sm text-stone-500">No data yet.</p>
                     ) : (
                       <div className="space-y-3">
                         {(() => {
@@ -337,16 +337,16 @@ export default function SuppliersPage() {
                                 <div className="flex items-center justify-between gap-2 text-sm">
                                   <Link
                                     href={`/dashboard/suppliers/${s.id}`}
-                                    className="truncate text-slate-200 hover:text-cyan-300"
+                                    className="truncate text-stone-200 hover:text-cyan-300"
                                   >
-                                    <span className="mr-1.5 text-slate-600">{i + 1}.</span>
+                                    <span className="mr-1.5 text-stone-600">{i + 1}.</span>
                                     {s.name}
                                   </Link>
-                                  <span className="shrink-0 font-medium text-slate-300">
+                                  <span className="shrink-0 font-medium text-stone-300">
                                     {topBy === 'spend' ? money(val) : val.toLocaleString()}
                                   </span>
                                 </div>
-                                <div className="h-2 overflow-hidden rounded-full bg-slate-800">
+                                <div className="h-2 overflow-hidden rounded-full bg-stone-800">
                                   <div
                                     className="h-full rounded-full bg-cyan-500"
                                     style={{ width: `${Math.max((val / max) * 100, 3)}%` }}
@@ -383,20 +383,20 @@ export default function SuppliersPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name *</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Name *</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
               placeholder="Acme Office Supplies"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Category</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Category</label>
             <select
               value={form.category_id}
               onChange={(e) => setForm({ ...form, category_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
             >
               <option value="">Uncategorized</option>
               {categories.map((c) => (
@@ -408,30 +408,30 @@ export default function SuppliersPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Country</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Country</label>
               <input
                 value={form.country}
                 onChange={(e) => setForm({ ...form, country: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
                 placeholder="US"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Domain</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Domain</label>
               <input
                 value={form.domain}
                 onChange={(e) => setForm({ ...form, domain: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
                 placeholder="acme.com"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Tax ID</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Tax ID</label>
             <input
               value={form.tax_id}
               onChange={(e) => setForm({ ...form, tax_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
               placeholder="optional"
             />
           </div>

@@ -123,7 +123,7 @@ export default function SampleDataPage() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Sample Data</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Seed a complete demo procurement dataset, including duplicate suppliers, tail spend, and off-contract transactions, to explore every analysis tool instantly.
           </p>
         </div>
@@ -182,7 +182,7 @@ export default function SampleDataPage() {
                     <h2 className="text-base font-semibold text-white">One-click demo seeding</h2>
                   </CardHeader>
                   <CardBody className="space-y-4">
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-stone-400">
                       Generates a realistic spend dataset in this workspace: a category tree, suppliers (with intentional duplicates and aliases), thousands of transactions across the long tail, purchase orders, invoices, and contracts.
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -201,7 +201,7 @@ export default function SampleDataPage() {
                     <h2 className="text-base font-semibold text-white">Reset workspace</h2>
                   </CardHeader>
                   <CardBody className="space-y-4">
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-stone-400">
                       Wipes all spend data in this workspace and regenerates a fresh sample dataset. Use this to start from a clean slate.
                     </p>
                     <Button variant="danger" onClick={reset} disabled={busy !== null}>
@@ -234,14 +234,14 @@ export default function SampleDataPage() {
                           const n = Number(v || 0)
                           return (
                             <div key={k} className="flex items-center gap-3">
-                              <div className="w-36 shrink-0 text-sm text-slate-400">{prettyLabel(k)}</div>
-                              <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-800">
+                              <div className="w-36 shrink-0 text-sm text-stone-400">{prettyLabel(k)}</div>
+                              <div className="h-3 flex-1 overflow-hidden rounded-full bg-stone-800">
                                 <div
                                   className="h-full rounded-full bg-cyan-500"
                                   style={{ width: `${Math.max((n / max) * 100, n > 0 ? 4 : 0)}%` }}
                                 />
                               </div>
-                              <div className="w-20 shrink-0 text-right text-sm font-medium text-slate-200">
+                              <div className="w-20 shrink-0 text-right text-sm font-medium text-stone-200">
                                 {n.toLocaleString()}
                               </div>
                             </div>
@@ -253,7 +253,7 @@ export default function SampleDataPage() {
                 </CardBody>
               </Card>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-stone-500">
                 After seeding, explore the{' '}
                 <Link href="/dashboard/tail" className="text-cyan-400 hover:text-cyan-300">Tail Spend</Link>,{' '}
                 <Link href="/dashboard/duplicates" className="text-cyan-400 hover:text-cyan-300">Duplicates</Link>, and{' '}

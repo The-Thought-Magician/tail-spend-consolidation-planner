@@ -255,12 +255,12 @@ export default function CategoriesPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search categories..."
-                  className="w-48 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-48 rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
               </CardHeader>
               <CardBody className="p-2">
                 {filteredTree.length === 0 ? (
-                  <p className="px-3 py-6 text-center text-sm text-slate-500">
+                  <p className="px-3 py-6 text-center text-sm text-stone-500">
                     No categories match &ldquo;{search}&rdquo;.
                   </p>
                 ) : (
@@ -292,14 +292,14 @@ export default function CategoriesPage() {
                   {selected ? selected.name : 'Category Analytics'}
                 </h2>
                 {selected && (
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-stone-500">
                     <span className="font-mono">{selected.code}</span>
                   </p>
                 )}
               </CardHeader>
               <CardBody>
                 {!selectedId ? (
-                  <p className="py-8 text-center text-sm text-slate-500">
+                  <p className="py-8 text-center text-sm text-stone-500">
                     Select a category to view spend analytics.
                   </p>
                 ) : analyticsLoading ? (
@@ -339,7 +339,7 @@ export default function CategoriesPage() {
                     </div>
                   </div>
                 ) : (
-                  <p className="py-6 text-center text-sm text-slate-500">No analytics available.</p>
+                  <p className="py-6 text-center text-sm text-stone-500">No analytics available.</p>
                 )}
               </CardBody>
             </Card>
@@ -373,7 +373,7 @@ export default function CategoriesPage() {
               value={form.code}
               onChange={(e) => setForm({ ...form, code: e.target.value })}
               placeholder="e.g. IT-SOFTWARE"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </Field>
           <Field label="Name">
@@ -381,14 +381,14 @@ export default function CategoriesPage() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="e.g. Software & SaaS"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </Field>
           <Field label="Parent Category">
             <select
               value={form.parent_id}
               onChange={(e) => setForm({ ...form, parent_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">— None (top level) —</option>
               {categories
@@ -411,7 +411,7 @@ function PageHeader({ onCreate, disabled }: { onCreate: () => void; disabled?: b
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Categories</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-stone-500">
           Spend taxonomy and per-category fragmentation analytics.
         </p>
       </div>
@@ -446,7 +446,7 @@ function TreeRow({
     <li>
       <div
         className={`group flex items-center gap-2 rounded-lg px-2 py-1.5 ${
-          active ? 'bg-cyan-500/10 ring-1 ring-cyan-500/30' : 'hover:bg-slate-800/50'
+          active ? 'bg-cyan-500/10 ring-1 ring-cyan-500/30' : 'hover:bg-stone-800/50'
         }`}
         style={{ paddingLeft: `${depth * 16 + 8}px` }}
       >
@@ -454,8 +454,8 @@ function TreeRow({
           onClick={() => onSelect(node.id)}
           className="flex flex-1 items-center gap-2 text-left"
         >
-          <span className="text-slate-600">{node.children.length > 0 ? '▸' : '·'}</span>
-          <span className={`text-sm ${active ? 'text-cyan-200' : 'text-slate-200'}`}>
+          <span className="text-stone-600">{node.children.length > 0 ? '▸' : '·'}</span>
+          <span className={`text-sm ${active ? 'text-cyan-200' : 'text-stone-200'}`}>
             {node.name}
           </span>
           <Badge tone="slate" className="font-mono">
@@ -466,14 +466,14 @@ function TreeRow({
           <button
             onClick={() => onAddChild(node.id)}
             title="Add sub-category"
-            className="rounded px-1.5 py-0.5 text-xs text-slate-400 hover:bg-slate-700 hover:text-cyan-300"
+            className="rounded px-1.5 py-0.5 text-xs text-stone-400 hover:bg-stone-700 hover:text-cyan-300"
           >
             +
           </button>
           <button
             onClick={() => onEdit(node)}
             title="Edit"
-            className="rounded px-1.5 py-0.5 text-xs text-slate-400 hover:bg-slate-700 hover:text-white"
+            className="rounded px-1.5 py-0.5 text-xs text-stone-400 hover:bg-stone-700 hover:text-white"
           >
             ✎
           </button>
@@ -481,7 +481,7 @@ function TreeRow({
             onClick={() => onDelete(node)}
             disabled={deletingId === node.id}
             title="Delete"
-            className="rounded px-1.5 py-0.5 text-xs text-slate-400 hover:bg-slate-700 hover:text-rose-300 disabled:opacity-40"
+            className="rounded px-1.5 py-0.5 text-xs text-stone-400 hover:bg-stone-700 hover:text-rose-300 disabled:opacity-40"
           >
             {deletingId === node.id ? '…' : '🗑'}
           </button>
@@ -523,10 +523,10 @@ function CoverageBar({
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="text-slate-400">{label}</span>
-        <span className="font-medium text-slate-200">{fmtPct(value)}</span>
+        <span className="text-stone-400">{label}</span>
+        <span className="font-medium text-stone-200">{fmtPct(value)}</span>
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
         <div className={`h-full ${barColor}`} style={{ width: `${clamped}%` }} />
       </div>
     </div>
@@ -536,7 +536,7 @@ function CoverageBar({
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
         {label}
       </span>
       {children}

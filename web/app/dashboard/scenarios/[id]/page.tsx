@@ -249,9 +249,9 @@ export default function ScenarioBuilderPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <Link href="/dashboard/scenarios" className="text-xs text-slate-500 hover:text-slate-300">← All scenarios</Link>
+          <Link href="/dashboard/scenarios" className="text-xs text-stone-500 hover:text-stone-300">← All scenarios</Link>
           <h1 className="mt-1 text-2xl font-bold text-white">Business Case Builder</h1>
-          <p className="mt-1 text-sm text-slate-400">Tune assumptions and supplier moves, then recompute the savings model.</p>
+          <p className="mt-1 text-sm text-stone-400">Tune assumptions and supplier moves, then recompute the savings model.</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="secondary" onClick={handleSave} disabled={saving || !dirty}>
@@ -287,7 +287,7 @@ export default function ScenarioBuilderPage() {
               <input
                 value={name}
                 onChange={(e) => { setName(e.target.value); setDirty(true) }}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </CardBody>
           </Card>
@@ -295,7 +295,7 @@ export default function ScenarioBuilderPage() {
           <Card>
             <CardHeader>
               <h2 className="text-base font-semibold text-white">Assumptions</h2>
-              <p className="mt-1 text-xs text-slate-500">Drag sliders or type exact values. Drives the savings model.</p>
+              <p className="mt-1 text-xs text-stone-500">Drag sliders or type exact values. Drives the savings model.</p>
             </CardHeader>
             <CardBody className="space-y-5">
               {ASSUMPTIONS.map((a) => {
@@ -303,7 +303,7 @@ export default function ScenarioBuilderPage() {
                 return (
                   <div key={a.key}>
                     <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium text-slate-200">{a.label}</label>
+                      <label className="text-sm font-medium text-stone-200">{a.label}</label>
                       <div className="flex items-center gap-2">
                         <input
                           type="number"
@@ -312,9 +312,9 @@ export default function ScenarioBuilderPage() {
                           max={a.max}
                           step={a.step}
                           onChange={(e) => setAssumption(a.key, num(e.target.value))}
-                          className="w-24 rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-right text-sm text-cyan-300 focus:border-cyan-500 focus:outline-none"
+                          className="w-24 rounded-md border border-stone-700 bg-stone-950 px-2 py-1 text-right text-sm text-cyan-300 focus:border-cyan-500 focus:outline-none"
                         />
-                        <span className="w-6 text-xs text-slate-500">{a.suffix}</span>
+                        <span className="w-6 text-xs text-stone-500">{a.suffix}</span>
                       </div>
                     </div>
                     <input
@@ -326,7 +326,7 @@ export default function ScenarioBuilderPage() {
                       onChange={(e) => setAssumption(a.key, num(e.target.value))}
                       className="mt-2 w-full accent-cyan-500"
                     />
-                    <p className="mt-1 text-xs text-slate-600">{a.hint}</p>
+                    <p className="mt-1 text-xs text-stone-600">{a.hint}</p>
                   </div>
                 )
               })}
@@ -337,18 +337,18 @@ export default function ScenarioBuilderPage() {
             <Card>
               <CardHeader>
                 <h2 className="text-base font-semibold text-white">Savings breakdown</h2>
-                <p className="mt-1 text-xs text-slate-500">Components computed by the model.</p>
+                <p className="mt-1 text-xs text-stone-500">Components computed by the model.</p>
               </CardHeader>
               <CardBody className="space-y-3">
                 {breakdown.map((b) => (
                   <div key={b.label}>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-300">{b.label}</span>
+                      <span className="text-stone-300">{b.label}</span>
                       <span className={`font-medium tabular-nums ${b.value < 0 ? 'text-rose-300' : 'text-emerald-300'}`}>
                         {fmtMoney(b.value)}
                       </span>
                     </div>
-                    <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-stone-800">
                       <div
                         className={`h-full rounded-full ${b.value < 0 ? 'bg-rose-400' : 'bg-cyan-400'}`}
                         style={{ width: `${Math.round((Math.abs(b.value) / breakdownMax) * 100)}%` }}
@@ -365,7 +365,7 @@ export default function ScenarioBuilderPage() {
           <Card>
             <CardHeader>
               <h2 className="text-base font-semibold text-white">Supplier moves</h2>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-stone-500">
                 <span className="text-rose-300">{fromIds.length} retiring</span> →{' '}
                 <span className="text-emerald-300">{toIds.length} consolidating to</span>
               </p>
@@ -375,12 +375,12 @@ export default function ScenarioBuilderPage() {
                 value={supplierSearch}
                 onChange={(e) => setSupplierSearch(e.target.value)}
                 placeholder="Search suppliers..."
-                className="mb-3 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+                className="mb-3 w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
               {suppliers.length === 0 ? (
                 <EmptyState title="No suppliers" description="Import or seed supplier data first." icon="🏷️" />
               ) : (
-                <div className="max-h-96 overflow-y-auto rounded-lg border border-slate-800">
+                <div className="max-h-96 overflow-y-auto rounded-lg border border-stone-800">
                   <Table>
                     <THead>
                       <TR>
@@ -428,7 +428,7 @@ export default function ScenarioBuilderPage() {
               <div>
                 <div className="mb-2 text-xs font-medium uppercase tracking-wide text-rose-400">Retiring ({fromIds.length})</div>
                 {fromIds.length === 0 ? (
-                  <p className="text-xs text-slate-600">None selected.</p>
+                  <p className="text-xs text-stone-600">None selected.</p>
                 ) : (
                   <div className="flex flex-wrap gap-1.5">
                     {fromIds.map((sid) => (
@@ -440,7 +440,7 @@ export default function ScenarioBuilderPage() {
               <div>
                 <div className="mb-2 text-xs font-medium uppercase tracking-wide text-emerald-400">Consolidating to ({toIds.length})</div>
                 {toIds.length === 0 ? (
-                  <p className="text-xs text-slate-600">None selected.</p>
+                  <p className="text-xs text-stone-600">None selected.</p>
                 ) : (
                   <div className="flex flex-wrap gap-1.5">
                     {toIds.map((sid) => (

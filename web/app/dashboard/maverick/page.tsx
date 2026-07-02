@@ -282,15 +282,15 @@ export default function MaverickPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Maverick rate</h2>
-                <p className="text-xs text-slate-500">Off-contract spend share, by {rateBy === 'category' ? 'category' : 'cost center'}</p>
+                <p className="text-xs text-stone-500">Off-contract spend share, by {rateBy === 'category' ? 'category' : 'cost center'}</p>
               </div>
-              <div className="inline-flex overflow-hidden rounded-lg border border-slate-700">
+              <div className="inline-flex overflow-hidden rounded-lg border border-stone-700">
                 {(['category', 'cost_center'] as const).map((b) => (
                   <button
                     key={b}
                     onClick={() => setRateBy(b)}
                     className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-                      rateBy === b ? 'bg-cyan-500 text-slate-950' : 'bg-slate-900 text-slate-400 hover:text-white'
+                      rateBy === b ? 'bg-cyan-500 text-stone-950' : 'bg-stone-900 text-stone-400 hover:text-white'
                     }`}
                   >
                     {b === 'category' ? 'Category' : 'Cost center'}
@@ -300,7 +300,7 @@ export default function MaverickPage() {
             </CardHeader>
             <CardBody>
               {rateRows.length === 0 ? (
-                <p className="text-sm text-slate-500">No rate data yet. Run detection to populate findings.</p>
+                <p className="text-sm text-stone-500">No rate data yet. Run detection to populate findings.</p>
               ) : (
                 <div className="space-y-3">
                   {rateRows.map((r, i) => {
@@ -310,17 +310,17 @@ export default function MaverickPage() {
                     return (
                       <div key={`${label}-${i}`}>
                         <div className="mb-1 flex items-center justify-between text-xs">
-                          <span className="truncate text-slate-300">{label}</span>
+                          <span className="truncate text-stone-300">{label}</span>
                           <span className="font-medium text-rose-300">{pct(frac)}</span>
                         </div>
-                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                           <div
                             className="h-full rounded-full bg-gradient-to-r from-amber-500 to-rose-500"
                             style={{ width: `${Math.min(100, (frac / maxRate) * 100)}%` }}
                           />
                         </div>
                         {(r.off_contract_amount != null || r.total_amount != null) && (
-                          <div className="mt-1 text-[11px] text-slate-500">
+                          <div className="mt-1 text-[11px] text-stone-500">
                             {money(r.off_contract_amount ?? r.off_contract)} off-contract of {money(r.total_amount ?? r.total)}
                           </div>
                         )}
@@ -336,19 +336,19 @@ export default function MaverickPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Off-contract findings</h2>
-                <p className="text-xs text-slate-500">{filtered.length} of {findings.length} shown</p>
+                <p className="text-xs text-stone-500">{filtered.length} of {findings.length} shown</p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search findings..."
-                  className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-44 rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="all">All statuses</option>
                   {STATUSES.map((s) => (
@@ -361,8 +361,8 @@ export default function MaverickPage() {
             </CardHeader>
 
             {selected.size > 0 && (
-              <div className="flex flex-wrap items-center gap-2 border-b border-slate-800 bg-slate-900/60 px-5 py-3 text-sm">
-                <span className="text-slate-400">{selected.size} selected</span>
+              <div className="flex flex-wrap items-center gap-2 border-b border-stone-800 bg-stone-900/60 px-5 py-3 text-sm">
+                <span className="text-stone-400">{selected.size} selected</span>
                 <Button variant="secondary" onClick={() => bulkSetStatus('remediated')} disabled={bulkBusy}>
                   Mark remediated
                 </Button>
@@ -429,8 +429,8 @@ export default function MaverickPage() {
                           />
                         </TD>
                         <TD>
-                          <div className="text-slate-200">{f.reason || 'Off-contract purchase'}</div>
-                          <div className="text-[11px] text-slate-500">
+                          <div className="text-stone-200">{f.reason || 'Off-contract purchase'}</div>
+                          <div className="text-[11px] text-stone-500">
                             {f.supplier_name || (f.supplier_id ? `Supplier ${String(f.supplier_id).slice(0, 8)}` : 'No supplier')}
                             {f.contract_id ? ` · Contract ${String(f.contract_id).slice(0, 8)}` : ' · No contract'}
                           </div>
@@ -452,7 +452,7 @@ export default function MaverickPage() {
                             value={(f.status || 'open').toLowerCase()}
                             disabled={updatingId === f.id}
                             onChange={(e) => setFindingStatus(f.id, e.target.value)}
-                            className="rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-200 focus:border-cyan-500 focus:outline-none disabled:opacity-50"
+                            className="rounded-md border border-stone-700 bg-stone-900 px-2 py-1 text-xs text-stone-200 focus:border-cyan-500 focus:outline-none disabled:opacity-50"
                           >
                             {STATUSES.map((s) => (
                               <option key={s} value={s}>
@@ -487,7 +487,7 @@ function Header({
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Maverick Spend</h1>
-        <p className="text-sm text-slate-500">Off-contract purchases, contract-price leakage, and maverick rate.</p>
+        <p className="text-sm text-stone-500">Off-contract purchases, contract-price leakage, and maverick rate.</p>
       </div>
       <Button onClick={onDetect} disabled={detecting || disabled}>
         {detecting ? 'Detecting...' : 'Run detection'}

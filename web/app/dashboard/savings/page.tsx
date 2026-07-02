@@ -271,7 +271,7 @@ export default function SavingsPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Savings Tracking</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Track identified savings through approval to realized value, and measure realization rate.
           </p>
         </div>
@@ -293,7 +293,7 @@ export default function SavingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-base font-semibold text-white">Savings waterfall</h2>
-          <p className="text-xs text-slate-500">Target vs realized progression</p>
+          <p className="text-xs text-stone-500">Target vs realized progression</p>
         </CardHeader>
         <CardBody className="space-y-3">
           {waterfallStages.map((s, idx) => {
@@ -301,14 +301,14 @@ export default function SavingsPage() {
             const isLast = idx === waterfallStages.length - 1
             return (
               <div key={`${s.label}-${idx}`} className="flex items-center gap-3">
-                <div className="w-32 shrink-0 text-xs text-slate-400">{s.label}</div>
-                <div className="h-6 flex-1 overflow-hidden rounded-md bg-slate-800/60">
+                <div className="w-32 shrink-0 text-xs text-stone-400">{s.label}</div>
+                <div className="h-6 flex-1 overflow-hidden rounded-md bg-stone-800/60">
                   <div
                     className={`h-full rounded-md ${isLast ? 'bg-emerald-400' : 'bg-cyan-500/70'}`}
                     style={{ width: `${s.amount === 0 ? 0 : Math.max(pct, 2)}%` }}
                   />
                 </div>
-                <div className="w-28 shrink-0 text-right text-sm tabular-nums text-slate-200">{fmtMoney(s.amount)}</div>
+                <div className="w-28 shrink-0 text-right text-sm tabular-nums text-stone-200">{fmtMoney(s.amount)}</div>
               </div>
             )
           })}
@@ -320,7 +320,7 @@ export default function SavingsPage() {
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold text-white">Realization rate</h2>
-            <p className="text-xs text-slate-500">Realized as % of target, grouped by {realizationBy}</p>
+            <p className="text-xs text-stone-500">Realized as % of target, grouped by {realizationBy}</p>
           </div>
           <div className="flex gap-1">
             {REALIZATION_DIMS.map((d) => (
@@ -352,12 +352,12 @@ export default function SavingsPage() {
                 return (
                   <div key={`${r.key || r.label || r.name || idx}`}>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-300">{r.label || r.name || r.key || `Row ${idx + 1}`}</span>
-                      <span className="tabular-nums text-slate-400">
+                      <span className="text-stone-300">{r.label || r.name || r.key || `Row ${idx + 1}`}</span>
+                      <span className="tabular-nums text-stone-400">
                         {fmtMoney(realized)} / {fmtMoney(target)} · {clamped}%
                       </span>
                     </div>
-                    <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-stone-800">
                       <div className={`h-full rounded-full ${tone}`} style={{ width: `${clamped}%` }} />
                     </div>
                   </div>
@@ -376,19 +376,19 @@ export default function SavingsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search period or note..."
-              className="w-56 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-56 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All types</option>
               <option value="target">Target</option>
               <option value="realized">Realized</option>
             </select>
           </div>
-          <span className="text-xs text-slate-500">{filtered.length} of {entries.length}</span>
+          <span className="text-xs text-stone-500">{filtered.length} of {entries.length}</span>
         </CardHeader>
         <CardBody className="p-0">
           {filtered.length === 0 ? (
@@ -420,7 +420,7 @@ export default function SavingsPage() {
               <TBody>
                 {filtered.map((e) => (
                   <TR key={e.id}>
-                    <TD className="font-medium text-slate-200">{e.period || '—'}</TD>
+                    <TD className="font-medium text-stone-200">{e.period || '—'}</TD>
                     <TD><Badge tone={e.type === 'realized' ? 'green' : 'cyan'}>{labelize(e.type)}</Badge></TD>
                     <TD>
                       {e.initiative_id ? (
@@ -428,12 +428,12 @@ export default function SavingsPage() {
                           {e.initiative_id.slice(0, 8)}
                         </Link>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-stone-600">—</span>
                       )}
                     </TD>
-                    <TD className="text-right tabular-nums text-slate-300">{fmtMoney(e.target_amount)}</TD>
+                    <TD className="text-right tabular-nums text-stone-300">{fmtMoney(e.target_amount)}</TD>
                     <TD className="text-right font-semibold tabular-nums text-emerald-300">{fmtMoney(e.realized_amount)}</TD>
-                    <TD className="text-slate-500">{e.note || '—'}</TD>
+                    <TD className="text-stone-500">{e.note || '—'}</TD>
                     <TD className="text-right">
                       <div className="flex justify-end gap-1">
                         <Button variant="ghost" className="px-2 py-1" onClick={() => openEdit(e)}>Edit</Button>
@@ -473,21 +473,21 @@ export default function SavingsPage() {
           )}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Period</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Period</label>
               <input
                 value={form.period}
                 onChange={(e) => setForm({ ...form, period: e.target.value })}
                 placeholder="2026-Q1"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 autoFocus
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Type</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Type</label>
               <select
                 value={form.type}
                 onChange={(e) => setForm({ ...form, type: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="target">Target</option>
                 <option value="realized">Realized</option>
@@ -496,39 +496,39 @@ export default function SavingsPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Target ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Target ($)</label>
               <input
                 type="number"
                 value={form.target_amount}
                 onChange={(e) => setForm({ ...form, target_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Realized ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Realized ($)</label>
               <input
                 type="number"
                 value={form.realized_amount}
                 onChange={(e) => setForm({ ...form, realized_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Initiative ID (optional)</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Initiative ID (optional)</label>
             <input
               value={form.initiative_id}
               onChange={(e) => setForm({ ...form, initiative_id: e.target.value })}
               placeholder="Link to an initiative"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Note</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Note</label>
             <input
               value={form.note}
               onChange={(e) => setForm({ ...form, note: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </div>
@@ -552,19 +552,19 @@ export default function SavingsPage() {
           )}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Period</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Period</label>
               <input
                 value={editForm.period}
                 onChange={(e) => setEditForm({ ...editForm, period: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Type</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Type</label>
               <select
                 value={editForm.type}
                 onChange={(e) => setEditForm({ ...editForm, type: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="target">Target</option>
                 <option value="realized">Realized</option>
@@ -573,30 +573,30 @@ export default function SavingsPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Target ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Target ($)</label>
               <input
                 type="number"
                 value={editForm.target_amount}
                 onChange={(e) => setEditForm({ ...editForm, target_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Realized ($)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Realized ($)</label>
               <input
                 type="number"
                 value={editForm.realized_amount}
                 onChange={(e) => setEditForm({ ...editForm, realized_amount: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Note</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Note</label>
             <input
               value={editForm.note}
               onChange={(e) => setEditForm({ ...editForm, note: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </div>

@@ -230,12 +230,12 @@ export default function DuplicatesPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All statuses</option>
               {GROUP_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
-            <span className="text-xs text-slate-500">{filtered.length} of {groups.length}</span>
+            <span className="text-xs text-stone-500">{filtered.length} of {groups.length}</span>
           </div>
         </CardHeader>
         <CardBody className="p-0">
@@ -262,10 +262,10 @@ export default function DuplicatesPage() {
               <TBody>
                 {filtered.map((g) => (
                   <TR key={g.id}>
-                    <TD className="font-mono text-xs text-slate-400">{g.id.slice(0, 8)}</TD>
+                    <TD className="font-mono text-xs text-stone-400">{g.id.slice(0, 8)}</TD>
                     <TD className="text-right tabular-nums">{g.member_supplier_ids?.length ?? 0}</TD>
                     <TD className="text-right"><Badge tone={simTone(g.similarity)}>{simPct(g.similarity)}</Badge></TD>
-                    <TD className="text-right tabular-nums text-slate-100">{money(g.combined_spend)}</TD>
+                    <TD className="text-right tabular-nums text-stone-100">{money(g.combined_spend)}</TD>
                     <TD><Badge tone={statusTone(g.status)}>{g.status || 'open'}</Badge></TD>
                     <TD className="text-right">
                       <Button variant="secondary" className="px-2 py-1 text-xs" onClick={() => loadDetail(g.id)}>Review</Button>
@@ -296,14 +296,14 @@ export default function DuplicatesPage() {
 
             <div className="flex flex-wrap items-center gap-3">
               <Badge tone={simTone(detail.group.similarity)}>Similarity {simPct(detail.group.similarity)}</Badge>
-              <span className="text-sm text-slate-400">Combined spend {money(detail.group.combined_spend)}</span>
+              <span className="text-sm text-stone-400">Combined spend {money(detail.group.combined_spend)}</span>
               <div className="ml-auto flex items-center gap-2">
-                <span className="text-xs uppercase tracking-wide text-slate-500">Status</span>
+                <span className="text-xs uppercase tracking-wide text-stone-500">Status</span>
                 <select
                   value={detail.group.status || 'open'}
                   onChange={(e) => setGroupStatus(e.target.value)}
                   disabled={updatingStatus}
-                  className="rounded-lg border border-slate-700 bg-slate-950/60 px-2 py-1 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-950/60 px-2 py-1 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   {GROUP_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -311,9 +311,9 @@ export default function DuplicatesPage() {
             </div>
 
             <div>
-              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Members</h3>
+              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Members</h3>
               <div className="flex flex-wrap gap-2">
-                {detail.members.length === 0 && <span className="text-sm text-slate-600">No members</span>}
+                {detail.members.length === 0 && <span className="text-sm text-stone-600">No members</span>}
                 {detail.members.map((m) => {
                   const isCanonical = detail.group.recommended_canonical_id === m.id
                   return (
@@ -325,7 +325,7 @@ export default function DuplicatesPage() {
                       className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm transition-colors ${
                         isCanonical
                           ? 'border-cyan-500/50 bg-cyan-500/10 text-cyan-300'
-                          : 'border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-600'
+                          : 'border-stone-700 bg-stone-900 text-stone-300 hover:border-stone-600'
                       }`}
                     >
                       {isCanonical && <span aria-hidden>★</span>}
@@ -334,11 +334,11 @@ export default function DuplicatesPage() {
                   )
                 })}
               </div>
-              <p className="mt-1 text-xs text-slate-600">Click a member to set it as the recommended canonical supplier.</p>
+              <p className="mt-1 text-xs text-stone-600">Click a member to set it as the recommended canonical supplier.</p>
             </div>
 
             <div>
-              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Candidate pairs</h3>
+              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-stone-500">Candidate pairs</h3>
               {detail.candidates.length === 0 ? (
                 <EmptyState title="No candidate pairs" />
               ) : (
@@ -355,14 +355,14 @@ export default function DuplicatesPage() {
                     <TBody>
                       {detail.candidates.map((c) => (
                         <TR key={c.id}>
-                          <TD className="text-slate-200">
-                            {memberName(c.supplier_a_id)} <span className="text-slate-600">↔</span> {memberName(c.supplier_b_id)}
+                          <TD className="text-stone-200">
+                            {memberName(c.supplier_a_id)} <span className="text-stone-600">↔</span> {memberName(c.supplier_b_id)}
                           </TD>
                           <TD className="text-right"><Badge tone={simTone(c.similarity)}>{simPct(c.similarity)}</Badge></TD>
                           <TD>
                             {c.decision
                               ? <Badge tone={c.decision === 'accept' ? 'green' : 'rose'}>{c.decision}</Badge>
-                              : <span className="text-slate-600">pending</span>}
+                              : <span className="text-stone-600">pending</span>}
                           </TD>
                           <TD className="text-right">
                             <div className="flex justify-end gap-2">
@@ -390,7 +390,7 @@ export default function DuplicatesPage() {
                   </Table>
                 </div>
               )}
-              <p className="mt-2 text-xs text-slate-600">Accepting a pair records an alias and a merge recommendation toward the canonical supplier.</p>
+              <p className="mt-2 text-xs text-stone-600">Accepting a pair records an alias and a merge recommendation toward the canonical supplier.</p>
             </div>
           </div>
         ) : null}
@@ -404,7 +404,7 @@ function Header({ onDetect, detecting, disabled }: { onDetect: () => void; detec
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 className="text-2xl font-bold text-white">Duplicate Suppliers</h1>
-        <p className="mt-1 text-sm text-slate-500">Fuzzy-matched supplier groups. Accept or reject pairs to consolidate your master.</p>
+        <p className="mt-1 text-sm text-stone-500">Fuzzy-matched supplier groups. Accept or reject pairs to consolidate your master.</p>
       </div>
       <Button onClick={onDetect} disabled={disabled || detecting}>{detecting ? 'Detecting...' : 'Run detection'}</Button>
     </div>

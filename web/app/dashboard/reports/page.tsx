@@ -271,9 +271,9 @@ export default function ReportsPage() {
                 <CardBody className="flex flex-1 flex-col">
                   <div className="flex items-center justify-between gap-2">
                     <Badge tone={typeTone(t.value)}>{t.label}</Badge>
-                    <span className="text-xs text-slate-600">{byType.get(t.value) || 0}</span>
+                    <span className="text-xs text-stone-600">{byType.get(t.value) || 0}</span>
                   </div>
-                  <p className="mt-3 flex-1 text-xs leading-relaxed text-slate-500">{t.description}</p>
+                  <p className="mt-3 flex-1 text-xs leading-relaxed text-stone-500">{t.description}</p>
                   <Button
                     variant="secondary"
                     className="mt-4 w-full"
@@ -295,7 +295,7 @@ export default function ReportsPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Saved reports</h2>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-stone-500">
                   {filtered.length} of {reports.length} shown
                 </p>
               </div>
@@ -304,12 +304,12 @@ export default function ReportsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search reports..."
-                  className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-44 rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="all">All types</option>
                   {REPORT_TYPES.map((t) => (
@@ -349,15 +349,15 @@ export default function ReportsPage() {
                     {filtered.map((r) => (
                       <TR key={r.id}>
                         <TD>
-                          <button onClick={() => openReport(r.id)} className="text-left font-medium text-slate-100 hover:text-cyan-300">
+                          <button onClick={() => openReport(r.id)} className="text-left font-medium text-stone-100 hover:text-cyan-300">
                             {r.name || typeLabel(r.type)}
                           </button>
-                          <div className="text-[11px] text-slate-600">{r.id.slice(0, 8)}</div>
+                          <div className="text-[11px] text-stone-600">{r.id.slice(0, 8)}</div>
                         </TD>
                         <TD>
                           <Badge tone={typeTone(r.type)}>{typeLabel(r.type)}</Badge>
                         </TD>
-                        <TD className="text-slate-400">{fmtDate(r.created_at)}</TD>
+                        <TD className="text-stone-400">{fmtDate(r.created_at)}</TD>
                         <TD className="text-right">
                           <div className="inline-flex gap-2">
                             <Button variant="ghost" onClick={() => openReport(r.id)}>
@@ -395,7 +395,7 @@ export default function ReportsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Report type</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Report type</label>
             <select
               value={genType}
               onChange={(e) => {
@@ -403,7 +403,7 @@ export default function ReportsPage() {
                 setGenType(t)
                 setGenName(`${typeLabel(t)} — ${new Date().toLocaleDateString()}`)
               }}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               {REPORT_TYPES.map((t) => (
                 <option key={t.value} value={t.value}>
@@ -411,26 +411,26 @@ export default function ReportsPage() {
                 </option>
               ))}
             </select>
-            <p className="mt-1.5 text-xs text-slate-500">
+            <p className="mt-1.5 text-xs text-stone-500">
               {REPORT_TYPES.find((t) => t.value === genType)?.description}
             </p>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Report name</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Report name</label>
             <input
               value={genName}
               onChange={(e) => setGenName(e.target.value)}
               placeholder="Q3 FY26 procurement review"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Period (optional)</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Period (optional)</label>
             <input
               value={genPeriod}
               onChange={(e) => setGenPeriod(e.target.value)}
               placeholder="e.g. 2026-Q3 or FY2026"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </div>
@@ -462,7 +462,7 @@ export default function ReportsPage() {
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-3">
               <Badge tone={typeTone(viewing.type)}>{typeLabel(viewing.type)}</Badge>
-              <span className="text-xs text-slate-500">Generated {fmtDate(viewing.created_at)}</span>
+              <span className="text-xs text-stone-500">Generated {fmtDate(viewing.created_at)}</span>
             </div>
             <ReportPayload payload={viewing.payload} />
           </div>
@@ -474,7 +474,7 @@ export default function ReportsPage() {
 
 function ReportPayload({ payload }: { payload: any }) {
   if (payload == null) {
-    return <p className="text-sm text-slate-500">This report has no payload data.</p>
+    return <p className="text-sm text-stone-500">This report has no payload data.</p>
   }
 
   const sections: { title: string; node: any }[] = []
@@ -497,11 +497,11 @@ function ReportPayload({ payload }: { payload: any }) {
 }
 
 function PayloadNode({ keyName, value }: { keyName: string; value: any }) {
-  if (value == null) return <p className="text-sm text-slate-600">—</p>
+  if (value == null) return <p className="text-sm text-stone-600">—</p>
 
   // Array of objects -> table
   if (Array.isArray(value)) {
-    if (value.length === 0) return <p className="text-sm text-slate-600">No rows.</p>
+    if (value.length === 0) return <p className="text-sm text-stone-600">No rows.</p>
     if (typeof value[0] === 'object' && value[0] !== null) {
       const cols = Array.from(
         value.reduce((set: Set<string>, row: any) => {
@@ -510,7 +510,7 @@ function PayloadNode({ keyName, value }: { keyName: string; value: any }) {
         }, new Set<string>()),
       ).slice(0, 8)
       return (
-        <div className="overflow-x-auto rounded-lg border border-slate-800">
+        <div className="overflow-x-auto rounded-lg border border-stone-800">
           <Table>
             <THead>
               <TR>
@@ -535,7 +535,7 @@ function PayloadNode({ keyName, value }: { keyName: string; value: any }) {
       )
     }
     return (
-      <ul className="list-inside list-disc space-y-1 text-sm text-slate-300">
+      <ul className="list-inside list-disc space-y-1 text-sm text-stone-300">
         {value.map((v: any, i: number) => (
           <li key={i}>{fmtVal(keyName, v)}</li>
         ))}
@@ -553,16 +553,16 @@ function PayloadNode({ keyName, value }: { keyName: string; value: any }) {
         {scalars.length > 0 && (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {scalars.map(([k, v]) => (
-              <div key={k} className="rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2">
-                <div className="text-[11px] uppercase tracking-wide text-slate-500">{humanizeKey(k)}</div>
-                <div className="mt-0.5 text-sm font-semibold text-slate-100 tabular-nums">{fmtVal(k, v)}</div>
+              <div key={k} className="rounded-lg border border-stone-800 bg-stone-900/60 px-3 py-2">
+                <div className="text-[11px] uppercase tracking-wide text-stone-500">{humanizeKey(k)}</div>
+                <div className="mt-0.5 text-sm font-semibold text-stone-100 tabular-nums">{fmtVal(k, v)}</div>
               </div>
             ))}
           </div>
         )}
         {complex.map(([k, v]) => (
           <div key={k}>
-            <h4 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-400">{humanizeKey(k)}</h4>
+            <h4 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-stone-400">{humanizeKey(k)}</h4>
             <PayloadNode keyName={k} value={v} />
           </div>
         ))}
@@ -571,7 +571,7 @@ function PayloadNode({ keyName, value }: { keyName: string; value: any }) {
   }
 
   // Scalar
-  return <p className="text-sm font-semibold text-slate-100">{fmtVal(keyName, value)}</p>
+  return <p className="text-sm font-semibold text-stone-100">{fmtVal(keyName, value)}</p>
 }
 
 function Header({ onGenerate, disabled }: { onGenerate: () => void; disabled?: boolean }) {
@@ -579,7 +579,7 @@ function Header({ onGenerate, disabled }: { onGenerate: () => void; disabled?: b
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Reports</h1>
-        <p className="text-sm text-slate-500">Generate board-ready reports from your spend analysis and revisit saved ones.</p>
+        <p className="text-sm text-stone-500">Generate board-ready reports from your spend analysis and revisit saved ones.</p>
       </div>
       <Button onClick={onGenerate} disabled={disabled}>
         Generate report

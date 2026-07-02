@@ -295,7 +295,7 @@ export default function TransactionCostPage() {
               <CardHeader className="flex items-center justify-between gap-3">
                 <div>
                   <h2 className="text-sm font-semibold text-white">Cost models</h2>
-                  <p className="text-xs text-slate-500">Per-PO, per-invoice and per-supplier processing costs</p>
+                  <p className="text-xs text-stone-500">Per-PO, per-invoice and per-supplier processing costs</p>
                 </div>
                 <Button variant="secondary" onClick={openCreate}>New model</Button>
               </CardHeader>
@@ -324,7 +324,7 @@ export default function TransactionCostPage() {
                         <TR key={m.id}>
                           <TD>
                             <div className="flex items-center gap-2">
-                              <span className="font-medium text-slate-200">{m.name}</span>
+                              <span className="font-medium text-stone-200">{m.name}</span>
                               {m.is_default && <Badge tone="cyan">default</Badge>}
                             </div>
                           </TD>
@@ -357,10 +357,10 @@ export default function TransactionCostPage() {
             <Card>
               <CardHeader>
                 <h2 className="text-sm font-semibold text-white">Tail reduction sensitivity</h2>
-                <p className="text-xs text-slate-500">Modeled cost reduction from removing N tail suppliers</p>
+                <p className="text-xs text-stone-500">Modeled cost reduction from removing N tail suppliers</p>
               </CardHeader>
               <CardBody>
-                <label className="mb-1 flex items-center justify-between text-xs text-slate-400">
+                <label className="mb-1 flex items-center justify-between text-xs text-stone-400">
                   <span>Suppliers to remove</span>
                   <span className="font-semibold text-cyan-300">{reductionN}</span>
                 </label>
@@ -376,25 +376,25 @@ export default function TransactionCostPage() {
                   className="w-full accent-cyan-500"
                 />
                 <div className="mt-4 grid grid-cols-3 gap-3">
-                  <div className="rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-500">Baseline</div>
-                    <div className="mt-1 text-lg font-bold text-slate-200">{money(redBaseline)}</div>
+                  <div className="rounded-lg border border-stone-800 bg-stone-900/60 px-3 py-2">
+                    <div className="text-[11px] uppercase tracking-wide text-stone-500">Baseline</div>
+                    <div className="mt-1 text-lg font-bold text-stone-200">{money(redBaseline)}</div>
                   </div>
-                  <div className="rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-500">Projected</div>
+                  <div className="rounded-lg border border-stone-800 bg-stone-900/60 px-3 py-2">
+                    <div className="text-[11px] uppercase tracking-wide text-stone-500">Projected</div>
                     <div className="mt-1 text-lg font-bold text-cyan-300">{money(redProjected)}</div>
                   </div>
-                  <div className="rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-500">Savings</div>
+                  <div className="rounded-lg border border-stone-800 bg-stone-900/60 px-3 py-2">
+                    <div className="text-[11px] uppercase tracking-wide text-stone-500">Savings</div>
                     <div className="mt-1 text-lg font-bold text-emerald-300">{money(redSavings)}</div>
                   </div>
                 </div>
                 <div className="mt-4">
                   <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className="text-slate-400">Reduction</span>
+                    <span className="text-stone-400">Reduction</span>
                     <span className="font-medium text-emerald-300">{redPct.toFixed(1)}%</span>
                   </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                  <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400"
                       style={{ width: `${Math.min(100, Math.max(0, redPct))}%` }}
@@ -403,7 +403,7 @@ export default function TransactionCostPage() {
                 </div>
                 {Array.isArray(reduction?.points) && reduction!.points!.length > 0 && (
                   <div className="mt-5">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-500">Savings curve</div>
+                    <div className="text-[11px] uppercase tracking-wide text-stone-500">Savings curve</div>
                     <div className="mt-2 flex h-24 items-end gap-1">
                       {reduction!.points!.map((p, i) => {
                         const maxS = Math.max(0.0001, ...reduction!.points!.map((x) => num(x.savings)))
@@ -428,19 +428,19 @@ export default function TransactionCostPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Cost ledger</h2>
-                <p className="text-xs text-slate-500">{filteredLedger.length} of {ledger.length} suppliers</p>
+                <p className="text-xs text-stone-500">{filteredLedger.length} of {ledger.length} suppliers</p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search suppliers..."
-                  className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                  className="w-44 rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
                 <select
                   value={computeModelId}
                   onChange={(e) => setComputeModelId(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-900 px-3 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   <option value="">Model: default</option>
                   {models.map((m) => (
@@ -488,15 +488,15 @@ export default function TransactionCostPage() {
                     {filteredLedger.map((r) => (
                       <TR key={r.id}>
                         <TD>
-                          <div className="text-slate-200">
+                          <div className="text-stone-200">
                             {r.supplier_name || (r.supplier_id ? `Supplier ${String(r.supplier_id).slice(0, 8)}` : '—')}
                           </div>
                         </TD>
-                        <TD className="text-right tabular-nums text-slate-400">{num(r.po_count).toLocaleString()}</TD>
-                        <TD className="text-right tabular-nums text-slate-400">{num(r.invoice_count).toLocaleString()}</TD>
+                        <TD className="text-right tabular-nums text-stone-400">{num(r.po_count).toLocaleString()}</TD>
+                        <TD className="text-right tabular-nums text-stone-400">{num(r.invoice_count).toLocaleString()}</TD>
                         <TD className="text-right font-semibold tabular-nums text-rose-300">{money(r.est_cost)}</TD>
                         <TD>
-                          <div className="h-2 w-28 overflow-hidden rounded-full bg-slate-800">
+                          <div className="h-2 w-28 overflow-hidden rounded-full bg-stone-800">
                             <div
                               className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-rose-500"
                               style={{ width: `${Math.min(100, (num(r.est_cost) / maxLedgerCost) * 100)}%` }}
@@ -534,7 +534,7 @@ export default function TransactionCostPage() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Standard process cost"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </Field>
           <div className="grid grid-cols-3 gap-3">
@@ -545,7 +545,7 @@ export default function TransactionCostPage() {
                 step="0.01"
                 value={form.cost_per_po}
                 onChange={(e) => setForm({ ...form, cost_per_po: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Cost / Invoice">
@@ -555,7 +555,7 @@ export default function TransactionCostPage() {
                 step="0.01"
                 value={form.cost_per_invoice}
                 onChange={(e) => setForm({ ...form, cost_per_invoice: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
             <Field label="Cost / Supplier">
@@ -565,11 +565,11 @@ export default function TransactionCostPage() {
                 step="0.01"
                 value={form.cost_per_supplier}
                 onChange={(e) => setForm({ ...form, cost_per_supplier: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </Field>
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={form.is_default}
@@ -587,7 +587,7 @@ export default function TransactionCostPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</label>
+      <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">{label}</label>
       {children}
     </div>
   )
@@ -608,7 +608,7 @@ function Header({
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Transaction Cost</h1>
-        <p className="text-sm text-slate-500">Process-cost models, per-supplier ledger, and tail-reduction sensitivity.</p>
+        <p className="text-sm text-stone-500">Process-cost models, per-supplier ledger, and tail-reduction sensitivity.</p>
       </div>
       <div className="flex gap-2">
         <Button variant="secondary" onClick={onCreate} disabled={disabled}>

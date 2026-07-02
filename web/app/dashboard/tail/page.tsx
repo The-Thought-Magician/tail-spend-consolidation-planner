@@ -206,10 +206,10 @@ export default function TailPage() {
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Pareto Segments</h2>
-            <p className="text-xs text-slate-500">Spend distribution by {dimension.replace('_', ' ')}</p>
+            <p className="text-xs text-stone-500">Spend distribution by {dimension.replace('_', ' ')}</p>
           </div>
           {segments[0]?.computed_at && (
-            <span className="text-xs text-slate-500">Computed {new Date(segments[0].computed_at).toLocaleString()}</span>
+            <span className="text-xs text-stone-500">Computed {new Date(segments[0].computed_at).toLocaleString()}</span>
           )}
         </CardHeader>
         <CardBody>
@@ -223,14 +223,14 @@ export default function TailPage() {
             <div className="space-y-4">
               {/* Stacked Pareto bar */}
               <div className="space-y-2">
-                <div className="flex h-8 w-full overflow-hidden rounded-lg border border-slate-800">
+                <div className="flex h-8 w-full overflow-hidden rounded-lg border border-stone-800">
                   {segments.map((s) => {
                     const share = totalSpend > 0 ? (num(s.spend) / totalSpend) * 100 : 0
                     const tone = segTone(s.segment)
-                    const bg = tone === 'rose' ? 'bg-rose-500/70' : tone === 'amber' ? 'bg-amber-500/70' : tone === 'cyan' ? 'bg-cyan-500/70' : 'bg-slate-600'
+                    const bg = tone === 'rose' ? 'bg-rose-500/70' : tone === 'amber' ? 'bg-amber-500/70' : tone === 'cyan' ? 'bg-cyan-500/70' : 'bg-stone-600'
                     return (
                       <div key={s.id} className={`${bg} flex items-center justify-center`} style={{ width: `${Math.max(share, 0)}%` }} title={`${s.segment}: ${money(s.spend)} (${share.toFixed(1)}%)`}>
-                        {share > 8 && <span className="px-1 text-[10px] font-semibold text-slate-950">{share.toFixed(0)}%</span>}
+                        {share > 8 && <span className="px-1 text-[10px] font-semibold text-stone-950">{share.toFixed(0)}%</span>}
                       </div>
                     )
                   })}
@@ -256,10 +256,10 @@ export default function TailPage() {
                       <TR key={s.id}>
                         <TD><Badge tone={segTone(s.segment)}>{s.segment}</Badge></TD>
                         <TD className="text-right tabular-nums">{(s.supplier_count ?? 0).toLocaleString()}</TD>
-                        <TD className="text-right tabular-nums text-slate-100">{money(s.spend)}</TD>
+                        <TD className="text-right tabular-nums text-stone-100">{money(s.spend)}</TD>
                         <TD className="text-right tabular-nums">{scaledShare.toFixed(1)}%</TD>
                         <TD>
-                          <div className="h-2 w-full max-w-[160px] overflow-hidden rounded-full bg-slate-800">
+                          <div className="h-2 w-full max-w-[160px] overflow-hidden rounded-full bg-stone-800">
                             <div className="h-full bg-cyan-500" style={{ width: `${Math.min(scaledShare, 100)}%` }} />
                           </div>
                         </TD>
@@ -280,7 +280,7 @@ export default function TailPage() {
       <Card>
         <CardHeader>
           <h2 className="text-base font-semibold text-white">Tail Trend</h2>
-          <p className="text-xs text-slate-500">Tail spend over time</p>
+          <p className="text-xs text-stone-500">Tail spend over time</p>
         </CardHeader>
         <CardBody>
           {trend.length === 0 ? (
@@ -292,11 +292,11 @@ export default function TailPage() {
                 const h = maxTrend > 0 ? (val / maxTrend) * 150 : 0
                 return (
                   <div key={`${p.period}-${i}`} className="flex min-w-[40px] flex-1 flex-col items-center gap-1">
-                    <span className="text-[10px] text-slate-500 tabular-nums">{num(p.tail_spend) ? money(p.tail_spend) : val}</span>
+                    <span className="text-[10px] text-stone-500 tabular-nums">{num(p.tail_spend) ? money(p.tail_spend) : val}</span>
                     <div className="flex w-full items-end justify-center" style={{ height: 150 }}>
                       <div className="w-full rounded-t bg-gradient-to-t from-cyan-600 to-cyan-400" style={{ height: `${Math.max(h, 2)}px` }} title={`${p.period}: ${money(p.tail_spend)}`} />
                     </div>
-                    <span className="max-w-full truncate text-[10px] text-slate-500" title={p.period}>{p.period}</span>
+                    <span className="max-w-full truncate text-[10px] text-stone-500" title={p.period}>{p.period}</span>
                   </div>
                 )
               })}
@@ -331,8 +331,8 @@ export default function TailPage() {
               <TBody>
                 {drillSuppliers.map((s) => (
                   <TR key={s.id}>
-                    <TD className="font-medium text-slate-100">{s.name}</TD>
-                    <TD>{s.status ? <Badge tone="slate">{s.status}</Badge> : <span className="text-slate-600">—</span>}</TD>
+                    <TD className="font-medium text-stone-100">{s.name}</TD>
+                    <TD>{s.status ? <Badge tone="slate">{s.status}</Badge> : <span className="text-stone-600">—</span>}</TD>
                     <TD className="text-right tabular-nums">{s.spend != null ? money(s.spend) : '—'}</TD>
                   </TR>
                 ))}
@@ -360,27 +360,27 @@ function Header({
     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
       <div>
         <h1 className="text-2xl font-bold text-white">Tail Spend Analysis</h1>
-        <p className="mt-1 text-sm text-slate-500">Pareto classification, concentration metrics, and segment drilldown.</p>
+        <p className="mt-1 text-sm text-stone-500">Pareto classification, concentration metrics, and segment drilldown.</p>
       </div>
       <div className="flex flex-wrap items-end gap-3">
         <label className="block">
-          <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Dimension</span>
+          <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Dimension</span>
           <select
             value={dimension}
             onChange={(e) => setDimension(e.target.value)}
             disabled={disabled}
-            className="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             {DIMENSIONS.map((d) => <option key={d} value={d}>{d.replace('_', ' ')}</option>)}
           </select>
         </label>
         {setThreshold && (
           <label className="block">
-            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Head threshold %</span>
+            <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Head threshold %</span>
             <input
               type="number" min="1" max="99" value={threshold}
               onChange={(e) => setThreshold(e.target.value)}
-              className="w-24 rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+              className="w-24 rounded-lg border border-stone-700 bg-stone-950/60 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </label>
         )}

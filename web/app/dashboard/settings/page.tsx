@@ -267,7 +267,7 @@ export default function SettingsPage() {
           <Card>
             <CardHeader>
               <h2 className="text-sm font-semibold text-white">Workspace configuration</h2>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-stone-500">
                 Currency, fiscal year and the tail-spend threshold used across all analyses.
               </p>
             </CardHeader>
@@ -275,24 +275,24 @@ export default function SettingsPage() {
               <form onSubmit={handleSave} className="space-y-5">
                 <div className="grid gap-5 md:grid-cols-2">
                   <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                       Workspace name
                     </label>
                     <input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Acme Procurement"
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
+                      className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                       Base currency
                     </label>
                     <select
                       value={currency}
                       onChange={(e) => setCurrency(e.target.value)}
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                      className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                     >
                       {CURRENCIES.map((c) => (
                         <option key={c} value={c}>
@@ -300,16 +300,16 @@ export default function SettingsPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="mt-1 text-xs text-slate-500">All spend is reported in this currency.</p>
+                    <p className="mt-1 text-xs text-stone-500">All spend is reported in this currency.</p>
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                       Fiscal year start
                     </label>
                     <select
                       value={fyStart}
                       onChange={(e) => setFyStart(e.target.value)}
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
+                      className="w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                     >
                       {FY_MONTHS.map((m) => (
                         <option key={m.value} value={m.value}>
@@ -317,10 +317,10 @@ export default function SettingsPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="mt-1 text-xs text-slate-500">Anchors period rollups and trend charts.</p>
+                    <p className="mt-1 text-xs text-stone-500">Anchors period rollups and trend charts.</p>
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                       Tail spend threshold ({num(tailThreshold)}%)
                     </label>
                     <input
@@ -333,7 +333,7 @@ export default function SettingsPage() {
                       className="w-full accent-cyan-500"
                     />
                     <div className="mt-1 flex items-center justify-between">
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-stone-500">
                         Suppliers below the top {num(tailThreshold)}% of spend are tail.
                       </p>
                       <input
@@ -342,13 +342,13 @@ export default function SettingsPage() {
                         max={100}
                         value={tailThreshold}
                         onChange={(e) => setTailThreshold(e.target.value)}
-                        className="w-16 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-right text-xs text-slate-200 focus:border-cyan-500 focus:outline-none"
+                        className="w-16 rounded-md border border-stone-700 bg-stone-900 px-2 py-1 text-right text-xs text-stone-200 focus:border-cyan-500 focus:outline-none"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-end gap-2 border-t border-slate-800 pt-4">
+                <div className="flex items-center justify-end gap-2 border-t border-stone-800 pt-4">
                   <Button type="button" variant="ghost" onClick={resetForm} disabled={!dirty || saving}>
                     Reset
                   </Button>
@@ -364,7 +364,7 @@ export default function SettingsPage() {
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-white">Billing</h2>
-                <p className="text-xs text-slate-500">All features are free. Pro is optional support for the project.</p>
+                <p className="text-xs text-stone-500">All features are free. Pro is optional support for the project.</p>
               </div>
               <Badge tone={sub?.status ? planTone(sub.status) : isPro ? 'green' : 'slate'}>
                 {sub?.status ? sub.status.replace('_', ' ') : isPro ? 'pro' : 'free'}
@@ -372,21 +372,21 @@ export default function SettingsPage() {
             </CardHeader>
             <CardBody className="space-y-5">
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className={`rounded-xl border p-4 ${!isPro ? 'border-cyan-500/40 bg-cyan-500/5' : 'border-slate-800 bg-slate-900/50'}`}>
+                <div className={`rounded-xl border p-4 ${!isPro ? 'border-cyan-500/40 bg-cyan-500/5' : 'border-stone-800 bg-stone-900/50'}`}>
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold text-white">Free</h3>
                     {!isPro && <Badge tone="cyan">Current</Badge>}
                   </div>
                   <p className="mt-1 text-2xl font-bold text-white">
-                    $0<span className="text-sm font-normal text-slate-500">/mo</span>
+                    $0<span className="text-sm font-normal text-stone-500">/mo</span>
                   </p>
-                  <ul className="mt-3 space-y-1.5 text-sm text-slate-400">
+                  <ul className="mt-3 space-y-1.5 text-sm text-stone-400">
                     <li>· All analysis modules</li>
                     <li>· Unlimited suppliers & transactions</li>
                     <li>· Board-ready reports</li>
                   </ul>
                 </div>
-                <div className={`rounded-xl border p-4 ${isPro ? 'border-cyan-500/40 bg-cyan-500/5' : 'border-slate-800 bg-slate-900/50'}`}>
+                <div className={`rounded-xl border p-4 ${isPro ? 'border-cyan-500/40 bg-cyan-500/5' : 'border-stone-800 bg-stone-900/50'}`}>
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold text-white">Pro</h3>
                     {isPro && <Badge tone="green">Current</Badge>}
@@ -395,9 +395,9 @@ export default function SettingsPage() {
                     {billing?.plan?.price_cents != null
                       ? `$${(num(billing.plan.price_cents) / 100).toFixed(0)}`
                       : '$49'}
-                    <span className="text-sm font-normal text-slate-500">/mo</span>
+                    <span className="text-sm font-normal text-stone-500">/mo</span>
                   </p>
-                  <ul className="mt-3 space-y-1.5 text-sm text-slate-400">
+                  <ul className="mt-3 space-y-1.5 text-sm text-stone-400">
                     <li>· Everything in Free</li>
                     <li>· Priority support</li>
                     <li>· Support continued development</li>
@@ -406,10 +406,10 @@ export default function SettingsPage() {
               </div>
 
               {sub && (sub.current_period_end || sub.stripe_customer_id) && (
-                <div className="rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm text-slate-400">
+                <div className="rounded-lg border border-stone-800 bg-stone-900/50 px-4 py-3 text-sm text-stone-400">
                   {sub.current_period_end && (
                     <span>
-                      Current period ends <span className="text-slate-200">{fmtDate(sub.current_period_end)}</span>.{' '}
+                      Current period ends <span className="text-stone-200">{fmtDate(sub.current_period_end)}</span>.{' '}
                     </span>
                   )}
                   {sub.stripe_customer_id && <span>Customer {String(sub.stripe_customer_id).slice(0, 14)}.</span>}
@@ -449,12 +449,12 @@ export default function SettingsPage() {
             </CardHeader>
             <CardBody>
               <dl className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
-                <DetailRow label="Workspace ID" value={<code className="text-xs text-slate-300">{workspace?.id}</code>} />
+                <DetailRow label="Workspace ID" value={<code className="text-xs text-stone-300">{workspace?.id}</code>} />
                 <DetailRow label="Owner" value={workspace?.owner_id ? String(workspace.owner_id).slice(0, 16) : '—'} />
                 <DetailRow label="Created" value={fmtDate(workspace?.created_at)} />
                 <DetailRow label="Last updated" value={fmtDate(workspace?.updated_at)} />
               </dl>
-              <p className="mt-4 text-xs text-slate-600">
+              <p className="mt-4 text-xs text-stone-600">
                 To rename members or delete this workspace, head to{' '}
                 <a href="/dashboard/workspaces" className="text-cyan-400 hover:text-cyan-300">
                   Workspaces
@@ -485,9 +485,9 @@ function normalizeFy(v?: string | null): string {
 
 function DetailRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between border-b border-slate-800/60 pb-2">
-      <dt className="text-slate-500">{label}</dt>
-      <dd className="text-slate-200">{value}</dd>
+    <div className="flex items-center justify-between border-b border-stone-800/60 pb-2">
+      <dt className="text-stone-500">{label}</dt>
+      <dd className="text-stone-200">{value}</dd>
     </div>
   )
 }
@@ -497,7 +497,7 @@ function Header() {
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div>
         <h1 className="text-xl font-bold text-white">Settings</h1>
-        <p className="text-sm text-slate-500">Workspace configuration, currency, tail threshold and billing.</p>
+        <p className="text-sm text-stone-500">Workspace configuration, currency, tail threshold and billing.</p>
       </div>
     </div>
   )

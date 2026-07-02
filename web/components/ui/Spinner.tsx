@@ -5,8 +5,8 @@ interface SpinnerProps {
 
 export function Spinner({ className = '', label }: SpinnerProps) {
   return (
-    <div className={`flex items-center justify-center gap-3 text-slate-400 ${className}`}>
-      <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-cyan-400" />
+    <div className={`flex items-center justify-center gap-3 text-stone-400 ${className}`}>
+      <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-stone-700 border-t-cyan-400" />
       {label && <span className="text-sm">{label}</span>}
     </div>
   )

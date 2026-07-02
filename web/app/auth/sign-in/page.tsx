@@ -24,7 +24,7 @@ export default function SignIn() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-stone-950 px-4">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <Link href="/" className="inline-flex items-center gap-2 text-xl font-black tracking-tight text-cyan-400">
@@ -33,20 +33,20 @@ export default function SignIn() {
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-white">Sign in to your account</h1>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/70 p-8">
+        <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-stone-800 bg-stone-900/70 p-8">
           {error && <div className="rounded-lg border border-rose-700 bg-rose-900/30 p-3 text-sm text-rose-400">{error}</div>}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Email</label>
-            <input name="email" type="email" required className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none" placeholder="you@company.com" />
+            <label className="mb-1 block text-sm font-medium text-stone-300">Email</label>
+            <input name="email" type="email" required className="w-full rounded-lg border border-stone-700 bg-stone-800 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none" placeholder="you@company.com" />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Password</label>
-            <input name="password" type="password" required className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none" />
+            <label className="mb-1 block text-sm font-medium text-stone-300">Password</label>
+            <input name="password" type="password" required className="w-full rounded-lg border border-stone-700 bg-stone-800 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none" />
           </div>
-          <button type="submit" disabled={loading} className="w-full rounded-lg bg-cyan-500 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-400 disabled:opacity-50">
+          <button type="submit" disabled={loading} className="w-full rounded-lg bg-cyan-500 py-3 font-semibold text-stone-950 transition-colors hover:bg-cyan-400 disabled:opacity-50">
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
-          <p className="text-center text-sm text-slate-400">
+          <p className="text-center text-sm text-stone-400">
             No account? <Link href="/auth/sign-up" className="text-cyan-400 hover:text-cyan-300">Sign up</Link>
           </p>
         </form>

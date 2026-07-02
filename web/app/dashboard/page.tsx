@@ -174,7 +174,7 @@ export default function DashboardPage() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-white">Spend Overview</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-stone-500">
             Tail spend, leakage and consolidation savings at a glance.
           </p>
         </div>
@@ -246,10 +246,10 @@ export default function DashboardPage() {
                   return (
                     <div key={`${label}-${i}`}>
                       <div className="mb-1 flex items-center justify-between text-xs">
-                        <span className="font-medium capitalize text-slate-300">{label}</span>
-                        <span className="text-slate-400">{fmtCurrency(amount)}</span>
+                        <span className="font-medium capitalize text-stone-300">{label}</span>
+                        <span className="text-stone-400">{fmtCurrency(amount)}</span>
                       </div>
-                      <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                      <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
                         <div
                           className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-300 transition-all"
                           style={{ width: `${Math.max(pct, 3)}%` }}
@@ -283,7 +283,7 @@ export default function DashboardPage() {
                 }
               />
             ) : (
-              <ul className="divide-y divide-slate-800/70">
+              <ul className="divide-y divide-stone-800/70">
                 {opps.slice(0, 6).map((o) => (
                   <li key={o.id} className="flex items-start justify-between gap-4 py-3">
                     <div className="min-w-0">
@@ -293,12 +293,12 @@ export default function DashboardPage() {
                             {String(o.type).replace(/_/g, ' ')}
                           </Badge>
                         )}
-                        <span className="truncate text-sm font-medium text-slate-200">
+                        <span className="truncate text-sm font-medium text-stone-200">
                           {o.title ?? 'Recommendation'}
                         </span>
                       </div>
                       {o.rationale && (
-                        <p className="mt-1 line-clamp-2 text-xs text-slate-500">{o.rationale}</p>
+                        <p className="mt-1 line-clamp-2 text-xs text-stone-500">{o.rationale}</p>
                       )}
                     </div>
                     <div className="flex shrink-0 flex-col items-end gap-1">
@@ -306,7 +306,7 @@ export default function DashboardPage() {
                         {typeof o.impact === 'number' ? fmtCurrency(o.impact) : `Impact: ${o.impact ?? '—'}`}
                       </Badge>
                       {o.effort != null && (
-                        <span className="text-[11px] text-slate-500">
+                        <span className="text-[11px] text-stone-500">
                           Effort: {typeof o.effort === 'number' ? o.effort : String(o.effort)}
                         </span>
                       )}

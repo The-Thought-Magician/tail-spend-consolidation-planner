@@ -313,7 +313,7 @@ export default function SupplierDetailPage() {
             <h1 className="text-2xl font-bold text-white">{supplier.name}</h1>
             <Badge tone={statusTone(supplier.status)}>{supplier.status ?? 'active'}</Badge>
           </div>
-          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-400">
+          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-400">
             {supplier.normalized_name && <span>norm: {supplier.normalized_name}</span>}
             {supplier.country && <span>{supplier.country}</span>}
             {supplier.domain && <span>{supplier.domain}</span>}
@@ -354,7 +354,7 @@ export default function SupplierDetailPage() {
           </CardHeader>
           <CardBody>
             {catList.length === 0 ? (
-              <p className="text-sm text-slate-500">No category breakdown available.</p>
+              <p className="text-sm text-stone-500">No category breakdown available.</p>
             ) : (
               <div className="space-y-3">
                 {(() => {
@@ -363,11 +363,11 @@ export default function SupplierDetailPage() {
                     const v = Number(c.spend || 0)
                     return (
                       <div key={c.id} className="flex items-center gap-3">
-                        <div className="w-36 shrink-0 truncate text-sm text-slate-400">{c.name}</div>
-                        <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-800">
+                        <div className="w-36 shrink-0 truncate text-sm text-stone-400">{c.name}</div>
+                        <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-stone-800">
                           <div className="h-full rounded-full bg-cyan-500" style={{ width: `${Math.max((v / max) * 100, 3)}%` }} />
                         </div>
-                        <div className="w-24 shrink-0 text-right text-sm text-slate-300">{money(v)}</div>
+                        <div className="w-24 shrink-0 text-right text-sm text-stone-300">{money(v)}</div>
                       </div>
                     )
                   })
@@ -389,22 +389,22 @@ export default function SupplierDetailPage() {
                 onChange={(e) => setAliasInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addAlias()}
                 placeholder="Add raw vendor name..."
-                className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+                className="flex-1 rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
               <Button onClick={addAlias} disabled={addingAlias || !aliasInput.trim()}>
                 {addingAlias ? <Spinner /> : 'Add'}
               </Button>
             </div>
             {aliases.length === 0 ? (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-stone-500">
                 No aliases yet. Aliases map raw vendor-name variants (from imports) to this supplier.
               </p>
             ) : (
-              <ul className="divide-y divide-slate-800/70">
+              <ul className="divide-y divide-stone-800/70">
                 {aliases.map((a) => (
                   <li key={a.id} className="flex items-center justify-between py-2">
                     <div>
-                      <span className="text-sm text-slate-200">{a.raw_name}</span>
+                      <span className="text-sm text-stone-200">{a.raw_name}</span>
                       {a.source && (
                         <Badge tone="slate" className="ml-2">
                           {a.source}
@@ -437,21 +437,21 @@ export default function SupplierDetailPage() {
               onChange={(e) => setCommentInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && postComment()}
               placeholder="Add a note about this supplier..."
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
             <Button onClick={postComment} disabled={postingComment || !commentInput.trim()}>
               {postingComment ? <Spinner /> : 'Post'}
             </Button>
           </div>
           {comments.length === 0 ? (
-            <p className="text-sm text-slate-500">No comments yet.</p>
+            <p className="text-sm text-stone-500">No comments yet.</p>
           ) : (
             <ul className="space-y-3">
               {comments.map((c) => (
-                <li key={c.id} className="flex items-start justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900/50 p-3">
+                <li key={c.id} className="flex items-start justify-between gap-3 rounded-lg border border-stone-800 bg-stone-900/50 p-3">
                   <div>
-                    <p className="text-sm text-slate-200">{c.body}</p>
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="text-sm text-stone-200">{c.body}</p>
+                    <p className="mt-1 text-xs text-stone-500">
                       {c.user_id ? `${c.user_id === userId ? 'You' : c.user_id}` : 'Unknown'} · {fmtDate(c.created_at)}
                     </p>
                   </div>
@@ -495,19 +495,19 @@ export default function SupplierDetailPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Name</label>
             <input
               value={edit.name}
               onChange={(e) => setEdit({ ...edit, name: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Status</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Status</label>
             <select
               value={edit.status}
               onChange={(e) => setEdit({ ...edit, status: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
             >
               <option value="active">active</option>
               <option value="inactive">inactive</option>
@@ -516,28 +516,28 @@ export default function SupplierDetailPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Country</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Country</label>
               <input
                 value={edit.country}
                 onChange={(e) => setEdit({ ...edit, country: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Domain</label>
+              <label className="mb-1 block text-sm font-medium text-stone-300">Domain</label>
               <input
                 value={edit.domain}
                 onChange={(e) => setEdit({ ...edit, domain: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Tax ID</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Tax ID</label>
             <input
               value={edit.tax_id}
               onChange={(e) => setEdit({ ...edit, tax_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-white focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </div>
@@ -560,14 +560,14 @@ export default function SupplierDetailPage() {
           </>
         }
       >
-        <p className="mb-3 text-sm text-slate-400">
-          Select duplicate suppliers to fold into <span className="text-slate-200">{supplier.name}</span>. Their
+        <p className="mb-3 text-sm text-stone-400">
+          Select duplicate suppliers to fold into <span className="text-stone-200">{supplier.name}</span>. Their
           transactions are repointed and their names are recorded as aliases.
         </p>
         {mergeCandidates.length === 0 ? (
-          <p className="text-sm text-slate-500">No other suppliers available to merge.</p>
+          <p className="text-sm text-stone-500">No other suppliers available to merge.</p>
         ) : (
-          <div className="max-h-72 overflow-y-auto rounded-lg border border-slate-800">
+          <div className="max-h-72 overflow-y-auto rounded-lg border border-stone-800">
             <Table>
               <THead>
                 <TR>
@@ -587,7 +587,7 @@ export default function SupplierDetailPage() {
                         className="h-4 w-4 accent-cyan-500"
                       />
                     </TD>
-                    <TD className="text-slate-200">{s.name}</TD>
+                    <TD className="text-stone-200">{s.name}</TD>
                     <TD>
                       <Badge tone={statusTone(s.status)}>{s.status ?? 'active'}</Badge>
                     </TD>
